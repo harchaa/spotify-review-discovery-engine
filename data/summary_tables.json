@@ -2,8 +2,8 @@
   "themes": [
     {
       "theme": "other",
-      "count": 220,
-      "weighted_count": 40037,
+      "count": 222,
+      "weighted_count": 40044,
       "share": 0.8266
     },
     {
@@ -28,7 +28,7 @@
       "theme": "filter_bubble_overpersonalization",
       "count": 21,
       "weighted_count": 884,
-      "share": 0.0183
+      "share": 0.0182
     },
     {
       "theme": "no_control_over_algorithm",
@@ -38,8 +38,8 @@
     },
     {
       "theme": "repetition_fatigue",
-      "count": 14,
-      "weighted_count": 432,
+      "count": 15,
+      "weighted_count": 433,
       "share": 0.0089
     },
     {
@@ -50,8 +50,8 @@
     },
     {
       "theme": "poor_new_release_surfacing",
-      "count": 12,
-      "weighted_count": 261,
+      "count": 11,
+      "weighted_count": 260,
       "share": 0.0054
     }
   ],
@@ -59,32 +59,32 @@
     {
       "use_case_segment": "other",
       "count": 115,
-      "share": 0.3295
+      "share": 0.3276
     },
     {
       "use_case_segment": "focus_work_listener",
-      "count": 90,
-      "share": 0.2579
+      "count": 91,
+      "share": 0.2593
     },
     {
       "use_case_segment": "genre_explorer_filter_bubble",
-      "count": 81,
-      "share": 0.2321
+      "count": 80,
+      "share": 0.2279
     },
     {
       "use_case_segment": "mood_context_listener",
-      "count": 52,
-      "share": 0.149
+      "count": 53,
+      "share": 0.151
     },
     {
       "use_case_segment": "discovery_seeker_distrusts_algo",
-      "count": 8,
-      "share": 0.0229
+      "count": 9,
+      "share": 0.0256
     },
     {
       "use_case_segment": "workout_tempo_listener",
       "count": 3,
-      "share": 0.0086
+      "share": 0.0085
     }
   ],
   "segment_details": {
@@ -92,7 +92,7 @@
       "top_themes": [
         {
           "theme": "discovery_buried_in_ui",
-          "count": 3
+          "count": 4
         },
         {
           "theme": "repetition_fatigue",
@@ -104,9 +104,9 @@
         }
       ],
       "top_jobs": [
+        "skip tracks",
         "using a music streaming service without restrictions",
-        "Find alternative ways to discover new music",
-        "Remove AI-generated content from playlists"
+        "Find alternative ways to discover new music"
       ]
     },
     "focus_work_listener": {
@@ -121,7 +121,7 @@
         },
         {
           "theme": "repetition_fatigue",
-          "count": 8
+          "count": 9
         }
       ],
       "top_jobs": [
@@ -138,7 +138,7 @@
         },
         {
           "theme": "discovery_buried_in_ui",
-          "count": 12
+          "count": 11
         },
         {
           "theme": "discovery_breaks_focus",
@@ -147,15 +147,15 @@
       ],
       "top_jobs": [
         "enjoy Spotify experience",
-        "avoiding ads",
-        "using a music streaming service without issues"
+        "discover new music",
+        "avoiding ads"
       ]
     },
     "mood_context_listener": {
       "top_themes": [
         {
           "theme": "other",
-          "count": 40
+          "count": 41
         },
         {
           "theme": "discovery_buried_in_ui",
@@ -169,14 +169,14 @@
       "top_jobs": [
         "enjoy music",
         "enjoy Spotify experience",
-        "relate to music through personal experiences"
+        "listen to music"
       ]
     },
     "other": {
       "top_themes": [
         {
           "theme": "other",
-          "count": 99
+          "count": 100
         },
         {
           "theme": "trust_in_recs",
@@ -211,7 +211,7 @@
       "job_to_be_done": "hear authentic human-created music",
       "theme": "other",
       "count": 1,
-      "weighted_score": 39894.0
+      "weighted_score": 39906.0
     },
     {
       "job_to_be_done": "access playlist radio",
@@ -527,6 +527,6 @@
       }
     ]
   },
-  "total_relevant": 349,
-  "total_rows": 1443
+  "total_relevant": 351,
+  "total_rows": 1440
 }
