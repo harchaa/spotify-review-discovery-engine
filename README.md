@@ -200,7 +200,7 @@ underlying data changed week to week. It now always regenerates
 pytest
 ```
 
-The suite (134 tests) mocks every network and LLM call, so it runs in under
+The suite (135 tests) mocks every network and LLM call, so it runs in under
 three seconds with no API key or internet access required. Each module's
 tests were written and run before moving to the next phase, and several were
 added *after* real bugs surfaced during live end-to-end runs (noted below):
@@ -230,6 +230,8 @@ Real scraping and real LLM calls surfaced failure modes that unit tests with moc
 - A permanent LLM failure (daily quota exhaustion) used to crash the whole pipeline and discard everything tagged earlier in that same run — fixed so a detected quota exhaustion stops the current stage early and keeps partial results; the per-row cache means a later run resumes rather than re-paying for already-tagged rows.
 - A smaller/faster model (`llama-3.1-8b-instant`, used to work around Groq's stricter free-tier cap on the 70B model) occasionally returned a malformed item inside a JSON response's `results` array (e.g. a bare string instead of an object) even with JSON mode requested — fixed by validating each item's shape defensively instead of assuming the model always follows the schema.
 - `run_pipeline.py`'s "should I skip the LLM step" check hardcoded a `GEMINI_API_KEY` lookup, so the very first weekly-scrape CI run had `LLM_PROVIDER=groq` and a valid `GROQ_API_KEY` but still silently skipped tagging (wrong key checked) — and then committed an untagged `reviews.csv` over the real tagged one. Fixed by reusing `llm_client.py`'s own provider-to-env-var mapping instead of a hardcoded name.
+- A manual "Re-run jobs" on an old workflow run re-executes against that run's *original* commit, not the latest `main` — after `main` moved on, the bot's `git push` was rejected as non-fast-forward (the pipeline itself had run fine; only the commit step failed). Fixed by fetching and merging `origin/main` before pushing, preferring this run's freshly-regenerated data files on conflict.
+- A row the model dropped from an otherwise-successful batch response (not a firm "irrelevant"/"other" judgment, just skipped) was getting cached as a permanent default — and the batch-level cache inside `generate_json` compounded it by replaying the same incomplete response on every retry, since the cache key is deterministic on the pending row set. Fixed by not caching the per-row default and bypassing the batch-level cache (`force=True`) for pending batches, so a retry actually re-hits the model. Prospective only: ~25 rows already cached under the old behavior stay at their default until something else invalidates that cache entry.
 
 ## Adversarial / prompt-injection testing
 
