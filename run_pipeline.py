@@ -7,7 +7,7 @@ from pathlib import Path
 
 from analysis.aggregate import answer_six_questions, build_summary_tables
 from analysis.cleaning import apply_recency_filter, get_recency_summary
-from analysis.llm_client import LLMClient
+from analysis.llm_client import API_KEY_ENV_VARS, DEFAULT_PROVIDER, LLMClient
 from analysis.merge import merge_clean_and_tag_language
 from analysis.tagging import apply_relevance_filter, apply_structured_tagging
 from scrapers.app_store import scrape_app_store_reviews
@@ -53,12 +53,22 @@ def run_pipeline(skip_llm: bool | None = None):
     print(f"- filtered date range: {recency_summary['date_range']}")
     print(f"- per-source date ranges: {recency_summary['source_date_ranges']}")
 
-    skip_llm = skip_llm if skip_llm is not None else not os.environ.get("GEMINI_API_KEY")
+    # Bug found via a live CI run: this used to hardcode a GEMINI_API_KEY check,
+    # so switching LLM_PROVIDER to groq made it always "detect" no key present
+    # (GROQ_API_KEY was set and valid, but never checked) and silently skip
+    # tagging entirely - reusing llm_client's own provider/env-var mapping
+    # keeps this in sync no matter which provider is configured.
+    active_provider = os.environ.get("LLM_PROVIDER", DEFAULT_PROVIDER)
+    required_key_var = API_KEY_ENV_VARS.get(active_provider)
+    if skip_llm is None:
+        skip_llm = not (required_key_var and os.environ.get(required_key_var))
     tables = None
     if skip_llm:
         logger.warning(
-            "GEMINI_API_KEY is not set - skipping relevance filtering, tagging, and aggregation. "
-            "Add the key to .env and re-run to complete the analysis steps."
+            "%s is not set for LLM_PROVIDER=%s - skipping relevance filtering, tagging, and "
+            "aggregation. Add the key to .env and re-run to complete the analysis steps.",
+            required_key_var,
+            active_provider,
         )
         _write_csv_json(filtered, "reviews")
     else:

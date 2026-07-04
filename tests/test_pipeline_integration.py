@@ -125,3 +125,72 @@ def test_pipeline_runs_llm_steps_when_key_present(tmp_path, monkeypatch):
 
     answers = json.loads((tmp_path / "six_question_answers.json").read_text())
     assert answers["why_struggle_to_discover"] == "answer"
+
+
+def _stub_llm_stage(monkeypatch):
+    """Fakes for the LLM-dependent stages so auto-detection tests never hit a real API."""
+    monkeypatch.setattr(run_pipeline, "apply_relevance_filter", lambda client, df: df.assign(relevant=True))
+    monkeypatch.setattr(run_pipeline, "apply_structured_tagging", lambda client, df: df)
+    monkeypatch.setattr(
+        run_pipeline,
+        "build_summary_tables",
+        lambda df: {"themes": [], "segments": [], "unmet_needs": [], "total_relevant": len(df), "total_rows": len(df)},
+    )
+    monkeypatch.setattr(run_pipeline, "answer_six_questions", lambda client, tables: {})
+
+
+def test_skip_llm_auto_detection_respects_configured_provider_not_just_gemini(tmp_path, monkeypatch):
+    # Regression test for a real bug found via a live CI run: LLM_PROVIDER=groq
+    # with a valid GROQ_API_KEY still got silently skipped, because the
+    # auto-detection only ever checked GEMINI_API_KEY regardless of provider.
+    recent = date.today().isoformat()
+    df_play = pd.DataFrame([_row("p1", "play_store", "Recommendations feel stale", recent)])
+    empty = pd.DataFrame(columns=["id", "source", "text", "rating", "votes", "locale", "date", "url", "language"])
+
+    monkeypatch.setattr(run_pipeline, "scrape_google_play_reviews", lambda: df_play)
+    monkeypatch.setattr(run_pipeline, "scrape_app_store_reviews", lambda: empty)
+    monkeypatch.setattr(run_pipeline, "scrape_community_ideas", lambda: empty)
+    monkeypatch.setattr(run_pipeline, "DATA_DIR", tmp_path)
+    monkeypatch.setenv("LLM_PROVIDER", "groq")
+    monkeypatch.setenv("GROQ_API_KEY", "fake-groq-key")
+    _stub_llm_stage(monkeypatch)
+
+    run_pipeline.run_pipeline()  # skip_llm=None -> must auto-detect from LLM_PROVIDER/GROQ_API_KEY
+
+    summary = json.loads((tmp_path / "pipeline_summary.json").read_text())
+    assert summary["skipped_llm"] is False
+    assert (tmp_path / "tagged.csv").exists()
+
+
+def test_skip_llm_auto_detection_skips_when_configured_providers_key_is_missing(tmp_path, monkeypatch):
+    # Same scenario but GROQ_API_KEY is absent - must skip even if some other
+    # provider's key (GEMINI_API_KEY) happens to be set in the environment.
+    empty = pd.DataFrame(columns=["id", "source", "text", "rating", "votes", "locale", "date", "url", "language"])
+    monkeypatch.setattr(run_pipeline, "scrape_google_play_reviews", lambda: empty)
+    monkeypatch.setattr(run_pipeline, "scrape_app_store_reviews", lambda: empty)
+    monkeypatch.setattr(run_pipeline, "scrape_community_ideas", lambda: empty)
+    monkeypatch.setattr(run_pipeline, "DATA_DIR", tmp_path)
+    monkeypatch.setenv("LLM_PROVIDER", "groq")
+    monkeypatch.setenv("GEMINI_API_KEY", "fake-gemini-key")  # wrong provider's key
+    _stub_llm_stage(monkeypatch)
+
+    run_pipeline.run_pipeline()
+
+    summary = json.loads((tmp_path / "pipeline_summary.json").read_text())
+    assert summary["skipped_llm"] is True
+    assert not (tmp_path / "tagged.csv").exists()
+
+
+def test_skip_llm_auto_detection_defaults_to_gemini_when_provider_unset(tmp_path, monkeypatch):
+    empty = pd.DataFrame(columns=["id", "source", "text", "rating", "votes", "locale", "date", "url", "language"])
+    monkeypatch.setattr(run_pipeline, "scrape_google_play_reviews", lambda: empty)
+    monkeypatch.setattr(run_pipeline, "scrape_app_store_reviews", lambda: empty)
+    monkeypatch.setattr(run_pipeline, "scrape_community_ideas", lambda: empty)
+    monkeypatch.setattr(run_pipeline, "DATA_DIR", tmp_path)
+    monkeypatch.setenv("GEMINI_API_KEY", "fake-gemini-key")  # no LLM_PROVIDER set
+    _stub_llm_stage(monkeypatch)
+
+    run_pipeline.run_pipeline()
+
+    summary = json.loads((tmp_path / "pipeline_summary.json").read_text())
+    assert summary["skipped_llm"] is False

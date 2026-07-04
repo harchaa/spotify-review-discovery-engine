@@ -34,7 +34,19 @@ def _fetch_page(country: str, page: int) -> list[dict]:
             resp = requests.get(url, headers=HEADERS, timeout=REQUEST_TIMEOUT)
             resp.raise_for_status()
             data = resp.json()
-            return data.get("feed", {}).get("entry") or []
+            entries = data.get("feed", {}).get("entry")
+            if not entries:
+                # Seen returning empty from some cloud/CI IP ranges even with a 200 and a
+                # normal-looking feed - this is diagnostic, not an error, so it doesn't retry.
+                logger.info(
+                    "app_store country=%s page=%s: no entries in response (status=%s, feed_keys=%s)",
+                    country,
+                    page,
+                    resp.status_code,
+                    sorted((data.get("feed") or {}).keys()),
+                )
+                return []
+            return entries
         except Exception as exc:
             logger.warning("app_store country=%s page=%s attempt=%s failed: %s", country, page, attempt, exc)
             if attempt == MAX_RETRIES:
