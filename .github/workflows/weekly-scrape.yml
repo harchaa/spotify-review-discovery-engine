@@ -58,5 +58,17 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add data/reviews.csv data/reviews.json data/tagged.csv data/tagged.json \
                   data/summary_tables.json data/six_question_answers.json data/pipeline_summary.json
-          git diff --staged --quiet && echo "No data changes this run" || git commit -m "Weekly data refresh: $(date -u +%Y-%m-%d)"
+          if git diff --staged --quiet; then
+            echo "No data changes this run"
+            exit 0
+          fi
+          git commit -m "Weekly data refresh: $(date -u +%Y-%m-%d)"
+          # main can have moved on since this job's checkout - a manual "Re-run jobs"
+          # re-executes against the run's ORIGINAL commit, not the latest main, so a
+          # plain push can be rejected as non-fast-forward. Merge in whatever's new on
+          # main first; -X ours only matters for the data files this job itself just
+          # regenerated, so our fresh run wins there while any unrelated changes on
+          # main (source code, docs) come through untouched.
+          git fetch origin main
+          git merge origin/main --no-edit -X ours
           git push
