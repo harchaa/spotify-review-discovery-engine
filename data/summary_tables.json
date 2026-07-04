@@ -1,0 +1,541 @@
+{
+  "themes": [
+    {
+      "theme": "filter_bubble_overpersonalization",
+      "count": 49,
+      "weighted_count": 31639,
+      "share": 0.4231
+    },
+    {
+      "theme": "other",
+      "count": 297,
+      "weighted_count": 11322,
+      "share": 0.1514
+    },
+    {
+      "theme": "discovery_buried_in_ui",
+      "count": 103,
+      "weighted_count": 9311,
+      "share": 0.1245
+    },
+    {
+      "theme": "poor_new_release_surfacing",
+      "count": 57,
+      "weighted_count": 7554,
+      "share": 0.101
+    },
+    {
+      "theme": "repetition_fatigue",
+      "count": 77,
+      "weighted_count": 5560,
+      "share": 0.0743
+    },
+    {
+      "theme": "discovery_breaks_focus",
+      "count": 54,
+      "weighted_count": 3661,
+      "share": 0.049
+    },
+    {
+      "theme": "no_control_over_algorithm",
+      "count": 59,
+      "weighted_count": 2973,
+      "share": 0.0398
+    },
+    {
+      "theme": "stale_recommendations",
+      "count": 86,
+      "weighted_count": 1794,
+      "share": 0.024
+    },
+    {
+      "theme": "trust_in_recs",
+      "count": 89,
+      "weighted_count": 972,
+      "share": 0.013
+    }
+  ],
+  "segments": [
+    {
+      "use_case_segment": "focus_work_listener",
+      "count": 256,
+      "share": 0.2939
+    },
+    {
+      "use_case_segment": "genre_explorer_filter_bubble",
+      "count": 219,
+      "share": 0.2514
+    },
+    {
+      "use_case_segment": "mood_context_listener",
+      "count": 146,
+      "share": 0.1676
+    },
+    {
+      "use_case_segment": "other",
+      "count": 144,
+      "share": 0.1653
+    },
+    {
+      "use_case_segment": "discovery_seeker_distrusts_algo",
+      "count": 73,
+      "share": 0.0838
+    },
+    {
+      "use_case_segment": "workout_tempo_listener",
+      "count": 33,
+      "share": 0.0379
+    }
+  ],
+  "segment_details": {
+    "discovery_seeker_distrusts_algo": {
+      "top_themes": [
+        {
+          "theme": "other",
+          "count": 17
+        },
+        {
+          "theme": "stale_recommendations",
+          "count": 10
+        },
+        {
+          "theme": "no_control_over_algorithm",
+          "count": 9
+        }
+      ],
+      "top_jobs": [
+        "discover new music",
+        "find new music",
+        "browse and discover new music"
+      ]
+    },
+    "focus_work_listener": {
+      "top_themes": [
+        {
+          "theme": "other",
+          "count": 65
+        },
+        {
+          "theme": "discovery_buried_in_ui",
+          "count": 42
+        },
+        {
+          "theme": "repetition_fatigue",
+          "count": 38
+        }
+      ],
+      "top_jobs": [
+        "listen to music without ads",
+        "enjoy music",
+        "remove ads"
+      ]
+    },
+    "genre_explorer_filter_bubble": {
+      "top_themes": [
+        {
+          "theme": "other",
+          "count": 59
+        },
+        {
+          "theme": "stale_recommendations",
+          "count": 29
+        },
+        {
+          "theme": "discovery_buried_in_ui",
+          "count": 27
+        }
+      ],
+      "top_jobs": [
+        "enjoy music",
+        "discover new music",
+        "enjoy music without ads"
+      ]
+    },
+    "mood_context_listener": {
+      "top_themes": [
+        {
+          "theme": "other",
+          "count": 61
+        },
+        {
+          "theme": "trust_in_recs",
+          "count": 26
+        },
+        {
+          "theme": "discovery_buried_in_ui",
+          "count": 14
+        }
+      ],
+      "top_jobs": [
+        "enjoy music",
+        "evaluation of overall quality",
+        "Be entertained"
+      ]
+    },
+    "other": {
+      "top_themes": [
+        {
+          "theme": "other",
+          "count": 89
+        },
+        {
+          "theme": "discovery_buried_in_ui",
+          "count": 9
+        },
+        {
+          "theme": "poor_new_release_surfacing",
+          "count": 9
+        }
+      ],
+      "top_jobs": [
+        "listen to music",
+        "leave a review",
+        "enjoy great music experience"
+      ]
+    },
+    "workout_tempo_listener": {
+      "top_themes": [
+        {
+          "theme": "discovery_buried_in_ui",
+          "count": 6
+        },
+        {
+          "theme": "trust_in_recs",
+          "count": 6
+        },
+        {
+          "theme": "other",
+          "count": 6
+        }
+      ],
+      "top_jobs": [
+        "evaluate app value",
+        "recreational and emotional therapy",
+        "emotional therapy and mood management"
+      ]
+    }
+  },
+  "unmet_needs": [
+    {
+      "job_to_be_done": "discover authentic music",
+      "theme": "filter_bubble_overpersonalization",
+      "count": 1,
+      "weighted_score": 53144.0
+    },
+    {
+      "job_to_be_done": "access their liked songs",
+      "theme": "filter_bubble_overpersonalization",
+      "count": 1,
+      "weighted_score": 17307.0
+    },
+    {
+      "job_to_be_done": "listen to playlist radio",
+      "theme": "filter_bubble_overpersonalization",
+      "count": 1,
+      "weighted_score": 12888.0
+    },
+    {
+      "job_to_be_done": "enjoy unlimited audiobook listening",
+      "theme": "poor_new_release_surfacing",
+      "count": 1,
+      "weighted_score": 11485.0
+    },
+    {
+      "job_to_be_done": "label AI-generated content",
+      "theme": "filter_bubble_overpersonalization",
+      "count": 1,
+      "weighted_score": 7576.0
+    },
+    {
+      "job_to_be_done": "configure the voice personality of AI DJ",
+      "theme": "filter_bubble_overpersonalization",
+      "count": 1,
+      "weighted_score": 7220.0
+    },
+    {
+      "job_to_be_done": "skip unwanted songs",
+      "theme": "filter_bubble_overpersonalization",
+      "count": 1,
+      "weighted_score": 6868.0
+    },
+    {
+      "job_to_be_done": "randomize the shuffle mode",
+      "theme": "repetition_fatigue",
+      "count": 1,
+      "weighted_score": 5224.0
+    },
+    {
+      "job_to_be_done": "access comprehensive music chart",
+      "theme": "discovery_buried_in_ui",
+      "count": 1,
+      "weighted_score": 4672.0
+    },
+    {
+      "job_to_be_done": "preserve Everynoise features",
+      "theme": "poor_new_release_surfacing",
+      "count": 1,
+      "weighted_score": 4590.0
+    }
+  ],
+  "quotes_by_theme": {
+    "discovery_breaks_focus": [
+      {
+        "text": "Return expanded queue view (not only sidebar) for desktop as it was before and now on web. As mentioned in https://community.spotify.com/t5/Desktop-Mac/Cannot-expand-queue-section-on-Mac-desktop-application/td-p/5922851 it would be great to return old and pretty standard view for queue (aka playing now). As having it very limited on sidebar is against existing UX Screenshots for reference: MasOS: Web version (preferred version):",
+        "source": "community",
+        "url": "https://community.spotify.com/t5/Live-Ideas/Return-expanded-queue-view-not-only-sidebar-for-desktop-as-it/idi-p/5924728"
+      },
+      {
+        "text": "Hide/Change Cover Photos Button. Hello, I really enjoy listening to songs when I am working at the office. Usually Spotify is open at one of my screens. However sometimes some cover photos of songs/artists/albums can be a bit on the NSFW side. So it would be great either: - Make a button for users to hide photos of songs/albums/artists. or - A bit more techy: Train an NSFW machine learning image model, that labels all your photos NSFW or SFW. Make a button for turning on the \"Work mode\". When user turns on this mode no NSFW photos should be visible. or - Possibly both. Best regards, Atakan Serin",
+        "source": "community",
+        "url": "https://community.spotify.com/t5/Live-Ideas/Hide-Change-Cover-Photos-Button/idi-p/6816920"
+      },
+      {
+        "text": "Ability to \"dislike\" or \"block\" unwant content!. Due to autoplay playing like content that I've listened to it automatically adds podcasts and content that I'm not interested in to my \"Your shows\" list. We should be able to control what content we don't want to listen to and have it blocked or removed from our subscriptions like any other subscription you have the ability to dislike content and therefore have it removed from your recommendations",
+        "source": "community",
+        "url": "https://community.spotify.com/t5/Live-Ideas/Ability-to-quot-dislike-quot-or-quot-block-quot-unwant-content/idi-p/5922984"
+      }
+    ],
+    "discovery_buried_in_ui": [
+      {
+        "text": "Spotify Wrapped - Access Previous Years' Wrapped Stories & Stats. I really wish Spotify can enable users to access all the previous years' Spotify Wrapped stories and statistics (since joining the app), to see information including minutes listened and the top 5 artsists and songs. Currently, we are only able to search for our previous years' top songs, but I think it would honestly be amazing to look back at stats of the Wrapped for the new year compared to previous years, would be a lovely feature and track record for personal memories and to share them with friends. I hope Spotify can seriously consider adding this",
+        "source": "community",
+        "url": "https://community.spotify.com/t5/Live-Ideas/Spotify-Wrapped-Access-Previous-Years-Wrapped-Stories-amp-Stats/idi-p/5716550"
+      },
+      {
+        "text": "Spotify Chart for Bangladesh. Dear Spotify Community, I hope this message finds you well. I'm writing to express my enthusiasm for Spotify and to suggest a feature that I believe would greatly benefit users like myself. I've been a loyal Spotify user for 3 years and have always appreciated the platform's dedication to providing a top-notch music streaming experience. However, I've noticed that one feature seems to be missing \u2013 a comprehensive Spotify chart for Bangladesh. A Bangladesh Spotify chart would not only add an exciting element to the platform but also serve as a valuable tool for Bangladeshi Spotify users to discover new music and trends. It could include weekly or monthly rankings of the most-streamed songs, albums, and artists, as well as genre-specific charts to cater to diverse musical preferences. I believe that such a feature would not only enhance the user experience but also foster a stronger sense of community among Bangladeshi Spotify users. It would provide a platform for discussions, recommendations, and celebrations of our favorite music. I understand that implementing new features requires time and resources, but I sincerely hope that the Spotify team will consider this suggestion. I'm confident that a Bangladesh Spotify chart would be well-received by the community and contribute to the continued success of the platform. Thank you for considering my suggestion. I look forward to hearing the thoughts of fellow community members and Spotify moderators on this matter. Best regards, Abantika, a Army and Bangladeshi Spotify user",
+        "source": "community",
+        "url": "https://community.spotify.com/t5/Live-Ideas/Spotify-Chart-for-Bangladesh/idi-p/6063037"
+      },
+      {
+        "text": "Music Visualisator. The idea is to create an audio/music visualisator like Windows Music Player did in the past, to have a background when streaming music, based on the beat",
+        "source": "community",
+        "url": "https://community.spotify.com/t5/Live-Ideas/Music-Visualisator/idi-p/5659923"
+      }
+    ],
+    "filter_bubble_overpersonalization": [
+      {
+        "text": "Mark / Disable AI Generated Songs. The platform is increasingly flooded with AI-generated songs (especially the Release Radar), making it harder for users to discover authentic, human-created music. To improve the listening experience, Spotify should introduce a clear label for AI-generated songs and provide an option to filter them out entirely",
+        "source": "community",
+        "url": "https://community.spotify.com/t5/Live-Ideas/Mark-Disable-AI-Generated-Songs/idi-p/6641329"
+      },
+      {
+        "text": "Bring back the heart button!. It's SUPER frustrating, we can't see which songs we liked in our own playlists,\u00a0Bring back the heart button PLEASE, the new way doesn't work AT ALL",
+        "source": "community",
+        "url": "https://community.spotify.com/t5/Live-Ideas/Bring-back-the-heart-button/idi-p/5809156"
+      },
+      {
+        "text": "Bring back Playlist radio. Radio is only available for artists and albums but not for playlists",
+        "source": "community",
+        "url": "https://community.spotify.com/t5/Live-Ideas/Bring-back-Playlist-radio/idi-p/5524706"
+      }
+    ],
+    "no_control_over_algorithm": [
+      {
+        "text": "Option to remove DJ from Your Library. I recently tried the new DJ feature and, afterwards, the DJ playlist icon appeared in my Library. I did not pin this feature. I also cannot remove said feature. Why does a one-time use turn into permanent residence?",
+        "source": "community",
+        "url": "https://community.spotify.com/t5/Live-Ideas/Option-to-remove-DJ-from-Your-Library/idi-p/5590947"
+      },
+      {
+        "text": "The ability to disable the Jam function.. Ok so Jam function seems incredibly odd to begin with, but I suppose in a rare instance where you want to listen to love songs with someone who's far away at the exact same time, or you're running a silent Disco, there might be a use for it for a very small number of people. But there should be an option to disable it in your settings. Let's start with the hypothetical scenario that I don't want to run into: A crazy ex or a stalker trying to send me their sad playlist everyday. Also, and possibly more frustrating, is the automatic prompt that comes of when you and another person listening to Spotify are on the same Wi-Fi. Why am I being sent an unprompted question without an invitation from another user in my home or business if I would like to join and listen to exactly what they're listening to at the same time. If I happen to want that, would I not just play the music aloud? We obviously already started listening to what we want to listen to on our own devices by ourselves, so why would I suddenly want to listen to exactly what they want to listen to?\u00a0 Automatically searching for users on the same Wi-Fi seems crazy intrusive to me what if we're on a public Wi-Fi at a mall? How many prompts would you'd be receiving to join? Anyway I don't mind if this crazy feature (that I'm willing to bet a Year's membership that under 5% of users use monthly) stays on the app,\u00a0 I just want the ability to turn it off so it doesn't bother me while I'm listening to music by myself",
+        "source": "community",
+        "url": "https://community.spotify.com/t5/Live-Ideas/The-ability-to-disable-the-Jam-function/idi-p/5662053"
+      },
+      {
+        "text": "Need an Allow or Disallow toggle in settings to play AI created content. I believe a toggle should be put into settings to either Allow or Disallow A.I. created content to play in my account. I personally would like to eliminate A.I. created music and support true human artists",
+        "source": "community",
+        "url": "https://community.spotify.com/t5/Live-Ideas/Need-an-Allow-or-Disallow-toggle-in-settings-to-play-AI-created/idi-p/7322651"
+      }
+    ],
+    "other": [
+      {
+        "text": "Add Spotify Chart for Bangladesh. SPOTIFY CHARTS IN BANGLADESH Spotify was launched in Bangladesh since February\u00a023, 2021 making music accessible to Bangladeshi locals, however due to absence\u00a0of Bangladesh charts,\u00a0it is impossible to see how local artists as well as international artists are performing\u00a0in the region. Spotify has been in popular demand in Bangladesh over the years and the number of users has increased significantly. In view of general public interest as well as of BTS fans who want to support their favorite artists by streaming their music, we would like the introduction of regional Spotify charts in Bangladesh to see the artists popularity and demand in the region. It would prove helpful to\u00a0Bangladeshi artists for them to see their demand in their hometown, and Bangladeshi fans to see how their favorite international musicians are doing in their own region. So\u00a0We humbly ask for transparent Spotify charts in Bangladesh that reflect listeners\u2019 real streams and support local artists. It\u2019s time for accurate rankings, fair data and equal visibility for the Bangladeshi music industry. We hope this idea finds you in great health and is given a thought by Spotify Team. Thank You!",
+        "source": "community",
+        "url": "https://community.spotify.com/t5/Live-Ideas/Add-Spotify-Chart-for-Bangladesh/idi-p/7351163"
+      },
+      {
+        "text": "How many times have you listened to a certain song?. It would be nice if you are listening to a song, that you can see how many times you have listened to/played this song",
+        "source": "community",
+        "url": "https://community.spotify.com/t5/Live-Ideas/How-many-times-have-you-listened-to-a-certain-song/idi-p/5713248"
+      },
+      {
+        "text": "[Mobile][Search] Shazam-like option within the app. Being able to source a song you hear without leaving the app",
+        "source": "community",
+        "url": "https://community.spotify.com/t5/Live-Ideas/Mobile-Search-Shazam-like-option-within-the-app/idi-p/5523662"
+      }
+    ],
+    "poor_new_release_surfacing": [
+      {
+        "text": "Do not limit Audiobook listening. I'm not an expert on the economics of audiobooks, but the reason that Spotify is great is that you get access to all of the music in the catalog and you can enjoy it as much as you like for a flat monthly fee. Spotify has introduced all sorts of insane new problems by limiting the amount of time listened.\u00a0 These are just a few examples: - Do the hours count for multiple people on family/duo accounts? - How to deal with getting cut off in the middle of a book? Instead, make Audiobook consumption unlimited JUST like is done for podcasts and music, etc. If you need to raise the price of the membership then do so.\u00a0 If you need to make an \"audiobook\" add-on subscription then do so. Do NOT limit the number of hours audiobooks or any other kind of media can be consumed.\u00a0 It's a terrible user experience and is a complete about-face to the model Spotify used to become the dominant music streaming service",
+        "source": "community",
+        "url": "https://community.spotify.com/t5/Live-Ideas/Do-not-limit-Audiobook-listening/idi-p/5714464"
+      },
+      {
+        "text": "Continue Everynoise. everynoise.com is an invaluable exploration of Spotify genres, and the only place to see complete Friday releases with genre cross-references. Without it, much new music goes unheard. The Spotify employee,\u00a0glenn mcdonald, who maintained this was let go in recent round of layoffs. Everynoise is no longer getting data feeds (beyond basic api) and New Releases may not happen. Please make everynoise functions supported. I would prioritize New Releases",
+        "source": "community",
+        "url": "https://community.spotify.com/t5/Live-Ideas/Continue-Everynoise/idi-p/5732433"
+      },
+      {
+        "text": "The \u2661 Heart button AND! a (+) Plus button. In March 2023, the \u2661 Heart button will start being replaced with a (+) Plus button for saving things to Your Library. Things that have been saved to Your Library will now show a green \u2714 Check icon instead of a green Heart icon. While the new (+) button is quite useful to know if a song is added to your library, many users loved to see a heart icon \u2661 on their favorite songs. Currently, to add a song to your favorites (\u2661) you have to click on the (+) button and add it to your favorites! It's very confusing, and it took away from seeing a lovely heart next to your favorite songs. \ud83d\ude1e My idea is for users to have both buttons. The (+) button to let users know that your songs are added in their libraries. And the \u2661 button so users can directly add their songs to their favorites! Both buttons would work very well, and would be very intuitive for users. Thank you very much for your support, I invite you to share the link to the idea so that it can get more recognition and reach Spotify, thank you very much. \u2665 \u2022Example:\u00a0\u2665 (+)",
+        "source": "community",
+        "url": "https://community.spotify.com/t5/Live-Ideas/The-Heart-button-AND-a-Plus-button/idi-p/5804678"
+      }
+    ],
+    "repetition_fatigue": [
+      {
+        "text": "WE NEED PURE SHUFFLE!. As many would have noticed, shuffle mode is not 100% random, as it depends on the popularity of the song, your last listen. But I believe shuffle mode should be fully random, and then make a new setting called \"enhanced shuffle\" with those variables. I absolutely love this app, but the one thing that's keeping it from being my favorite streaming service is this shuffle feature that only plays popular, and replayed songs. it infuriates me that the algorithm doesn't purely represent my/our music, and I desire to just turn off the app when songs constantly repeat",
+        "source": "community",
+        "url": "https://community.spotify.com/t5/Live-Ideas/WE-NEED-PURE-SHUFFLE/idi-p/5742021"
+      },
+      {
+        "text": "[All Platforms][Other] Button on play queue to shuffle current selections. Currently, in the panel \"Playing from play queue\" below \"Now playing,\" if there are any selections queued, there is a listing titled \"Next in Queue\" with one option \"Clear Queue\". My request - Add an additional button labeled \"Shuffle\", have it appear only if there is more than one selection in the queue. Pressing this \"shuffle\" button does a random sort of the selections currently in the queue. Note : selections below in the \"Next from\" section are not included, no change is made to their order. I need this because I routinely make a selection of singles and albums from several artists but I want then to shuffle the selections. This is kind of like building a playlist on the fly. An alternate idea would be to have a button that transfers selections in the queue to a playlist. But that is less preferable because I don't want a new playlist to be added",
+        "source": "community",
+        "url": "https://community.spotify.com/t5/Live-Ideas/All-Platforms-Other-Button-on-play-queue-to-shuffle-current/idi-p/5523734"
+      },
+      {
+        "text": "Make Smart Shuffle A Secondary Option. I'm not saying remove Smart Shuffle, or even to add a toggle switch to turn it off. Just undo whatever was done to make Smart Shuffle the default shuffle mode. We should only listen to Smart Shuffle songs if we deliberately choose to, otherwise the whole concept of a playlist goes out the window. Make it so we have to intentionally turn it on. Amazing to me that people have been clamoring for over a year for somthing to be done about this egregious annoyance. Does Spotify care about its customers? If we pay for a Premium service we should have Premium-level control over the music we listen to",
+        "source": "community",
+        "url": "https://community.spotify.com/t5/Live-Ideas/Make-Smart-Shuffle-A-Secondary-Option/idi-p/6143293"
+      }
+    ],
+    "stale_recommendations": [
+      {
+        "text": "A Spotify \u201cYour Top Songs of All Time\u201d playlist. A playlist Generated much like the top songs of the year, but for your entire account life. Could show songs that have stuck with you over the years and help with \u201cfavorite song\u201d debates all over the world",
+        "source": "community",
+        "url": "https://community.spotify.com/t5/Live-Ideas/A-Spotify-Your-Top-Songs-of-All-Time-playlist/idi-p/7032034"
+      },
+      {
+        "text": "How many others are listening to this song?. The ability to see how many other people in the world are *currently* listening to the same song as you",
+        "source": "community",
+        "url": "https://community.spotify.com/t5/Live-Ideas/How-many-others-are-listening-to-this-song/idi-p/5572513"
+      },
+      {
+        "text": "Song Tagging. We need an option to attach tags to a song (electronic, chill, soulful, etc.), as well as an option to sort based on these tags to create dynamic playlists. This would essentially be a manual version of the dynamic playlist option that is already on the app. This would help those of us with many playlists to keep track of songs and not worry about forgetting old playlists",
+        "source": "community",
+        "url": "https://community.spotify.com/t5/Live-Ideas/Song-Tagging/idi-p/5641048"
+      }
+    ],
+    "trust_in_recs": [
+      {
+        "text": "Allow disable AI \"about the song\" feature. The new \"about the song\" beta feature slows performance and displays AI generated and sometimes inaccurate or misleading content. Allow it to be disabled",
+        "source": "community",
+        "url": "https://community.spotify.com/t5/Live-Ideas/Allow-disable-AI-quot-about-the-song-quot-feature/idi-p/7334945"
+      },
+      {
+        "text": "Guest mode so if others play music won't affect my algorithm. Hello Spotify team, I think the app really needs a Guest Mode. When I give my phone to a friend to play music, their songs affect my recommendations. For example, I listen to heavy metal, but if my friend listens to other genres, the algorithm gets confused and shows me suggestions I don\u2019t like. A Guest Mode would let friends play music without changing my history or recommendations. Thank you,",
+        "source": "community",
+        "url": "https://community.spotify.com/t5/Live-Ideas/Guest-mode-so-if-others-play-music-won-t-affect-my-algorithm/idi-p/7098721"
+      },
+      {
+        "text": "Give Families the Power to Block Podcasts on Spotify. I love music, and so do my 9\u2011year\u2011old children. We use a Spotify Family account so everyone can enjoy music independently. My kids use simple audio players, and we chose not to activate Spotify Kids because its music features are too limited for daily use. Recently, my son accidentally discovered podcasts \u2014 and even worse, video podcasts . Many of these videos contain low\u2011quality, highly distracting content that is absolutely not appropriate for his age. The \u201cExplicit Content\u201d filter is completely ineffective here. It does nothing to block this kind of visual or audio content. Spotify really needs to give Family plan managers the ability to disable certain features for specific members. More specifically, we should be able to: Block explicit content Block video podcasts Block audio podcasts Block age\u2011inappropriate content based on a minimum age setting If adults want to waste time watching low\u2011value videos pushed by algorithms, that\u2019s their choice. But please keep our children out of this. Thank you",
+        "source": "community",
+        "url": "https://community.spotify.com/t5/Live-Ideas/Give-Families-the-Power-to-Block-Podcasts-on-Spotify/idi-p/7310488"
+      }
+    ]
+  },
+  "quotes_by_segment": {
+    "discovery_seeker_distrusts_algo": [
+      {
+        "text": "Mark / Disable AI Generated Songs. The platform is increasingly flooded with AI-generated songs (especially the Release Radar), making it harder for users to discover authentic, human-created music. To improve the listening experience, Spotify should introduce a clear label for AI-generated songs and provide an option to filter them out entirely",
+        "source": "community",
+        "url": "https://community.spotify.com/t5/Live-Ideas/Mark-Disable-AI-Generated-Songs/idi-p/6641329"
+      },
+      {
+        "text": "Give Families the Power to Block Podcasts on Spotify. I love music, and so do my 9\u2011year\u2011old children. We use a Spotify Family account so everyone can enjoy music independently. My kids use simple audio players, and we chose not to activate Spotify Kids because its music features are too limited for daily use. Recently, my son accidentally discovered podcasts \u2014 and even worse, video podcasts . Many of these videos contain low\u2011quality, highly distracting content that is absolutely not appropriate for his age. The \u201cExplicit Content\u201d filter is completely ineffective here. It does nothing to block this kind of visual or audio content. Spotify really needs to give Family plan managers the ability to disable certain features for specific members. More specifically, we should be able to: Block explicit content Block video podcasts Block audio podcasts Block age\u2011inappropriate content based on a minimum age setting If adults want to waste time watching low\u2011value videos pushed by algorithms, that\u2019s their choice. But please keep our children out of this. Thank you",
+        "source": "community",
+        "url": "https://community.spotify.com/t5/Live-Ideas/Give-Families-the-Power-to-Block-Podcasts-on-Spotify/idi-p/7310488"
+      },
+      {
+        "text": "Transitions don't play correctly. Hey folks, We've been getting reports t hat the transitions between songs are not being timed correctly the first time you start a playlist. When restarted, the transitions work as expected. This is being looked into & we'll keep you posted",
+        "source": "community",
+        "url": "https://community.spotify.com/t5/Ongoing-Issues/Transitions-don-t-play-correctly/idi-p/7238818"
+      }
+    ],
+    "focus_work_listener": [
+      {
+        "text": "Bring back the heart button!. It's SUPER frustrating, we can't see which songs we liked in our own playlists,\u00a0Bring back the heart button PLEASE, the new way doesn't work AT ALL",
+        "source": "community",
+        "url": "https://community.spotify.com/t5/Live-Ideas/Bring-back-the-heart-button/idi-p/5809156"
+      },
+      {
+        "text": "DISLIKE BUTTON. If i hate a song, then I don't want to hear it ever again. All of us run into this on an hourly basis. Every single day. Why in the world cant we dislike (or thumb down) a song to remove it from existence? Why do you torture us by playing songs we don't want to hear? There is a \"hide\" option (only on mobile), and its playlist specific. The desktop version doesn't even have this somewhat-useless feature. So I vote for a universal dislike button. No playlist limitations. No desktop vs mobile limitations. No buttons hidden in submenus. Just a simple, easily accessible button that can eliminate our headaches once and for all",
+        "source": "community",
+        "url": "https://community.spotify.com/t5/Live-Ideas/DISLIKE-BUTTON/idi-p/5649968"
+      },
+      {
+        "text": "Return expanded queue view (not only sidebar) for desktop as it was before and now on web. As mentioned in https://community.spotify.com/t5/Desktop-Mac/Cannot-expand-queue-section-on-Mac-desktop-application/td-p/5922851 it would be great to return old and pretty standard view for queue (aka playing now). As having it very limited on sidebar is against existing UX Screenshots for reference: MasOS: Web version (preferred version):",
+        "source": "community",
+        "url": "https://community.spotify.com/t5/Live-Ideas/Return-expanded-queue-view-not-only-sidebar-for-desktop-as-it/idi-p/5924728"
+      }
+    ],
+    "genre_explorer_filter_bubble": [
+      {
+        "text": "Bring back Playlist radio. Radio is only available for artists and albums but not for playlists",
+        "source": "community",
+        "url": "https://community.spotify.com/t5/Live-Ideas/Bring-back-Playlist-radio/idi-p/5524706"
+      },
+      {
+        "text": "Ai generated content should be labeled.. For one, Every song on this platform ai generated needs to be labeled as ai so people aren\u2019t paying for a ai generated celebrity unbeknownst to them. people wanna pay for hard-working artists. For two, In no way should ai art be accepted as art made by a real person even if they claim it was so hard zero effort and skill is put into ai music. Real artists would completely agree that ai trashes on the hard effort they make. People who rely on ai can hate me if they want for saying it because all they know how to make is ai generated content but people who spend years on a song are not equal to someone who generated it in a single day with a prompt. If you can\u2019t make music without ai generating it then learn and don\u2019t be lazy. People work very hard to teach themself skills ai just completely trashes on it",
+        "source": "community",
+        "url": "https://community.spotify.com/t5/Live-Ideas/Ai-generated-content-should-be-labeled/idi-p/7297856"
+      },
+      {
+        "text": "Continue Everynoise. everynoise.com is an invaluable exploration of Spotify genres, and the only place to see complete Friday releases with genre cross-references. Without it, much new music goes unheard. The Spotify employee,\u00a0glenn mcdonald, who maintained this was let go in recent round of layoffs. Everynoise is no longer getting data feeds (beyond basic api) and New Releases may not happen. Please make everynoise functions supported. I would prioritize New Releases",
+        "source": "community",
+        "url": "https://community.spotify.com/t5/Live-Ideas/Continue-Everynoise/idi-p/5732433"
+      }
+    ],
+    "mood_context_listener": [
+      {
+        "text": "Change/ Disable  voice personality of AI DJ. As the title says, it would be a great feature if we could change or disable the voice or personality of the AI DJ",
+        "source": "community",
+        "url": "https://community.spotify.com/t5/Live-Ideas/Change-Disable-voice-personality-of-AI-DJ/idi-p/5520491"
+      },
+      {
+        "text": "WE NEED PURE SHUFFLE!. As many would have noticed, shuffle mode is not 100% random, as it depends on the popularity of the song, your last listen. But I believe shuffle mode should be fully random, and then make a new setting called \"enhanced shuffle\" with those variables. I absolutely love this app, but the one thing that's keeping it from being my favorite streaming service is this shuffle feature that only plays popular, and replayed songs. it infuriates me that the algorithm doesn't purely represent my/our music, and I desire to just turn off the app when songs constantly repeat",
+        "source": "community",
+        "url": "https://community.spotify.com/t5/Live-Ideas/WE-NEED-PURE-SHUFFLE/idi-p/5742021"
+      },
+      {
+        "text": "Music Visualisator. The idea is to create an audio/music visualisator like Windows Music Player did in the past, to have a background when streaming music, based on the beat",
+        "source": "community",
+        "url": "https://community.spotify.com/t5/Live-Ideas/Music-Visualisator/idi-p/5659923"
+      }
+    ],
+    "other": [
+      {
+        "text": "Add Spotify Chart for Bangladesh. SPOTIFY CHARTS IN BANGLADESH Spotify was launched in Bangladesh since February\u00a023, 2021 making music accessible to Bangladeshi locals, however due to absence\u00a0of Bangladesh charts,\u00a0it is impossible to see how local artists as well as international artists are performing\u00a0in the region. Spotify has been in popular demand in Bangladesh over the years and the number of users has increased significantly. In view of general public interest as well as of BTS fans who want to support their favorite artists by streaming their music, we would like the introduction of regional Spotify charts in Bangladesh to see the artists popularity and demand in the region. It would prove helpful to\u00a0Bangladeshi artists for them to see their demand in their hometown, and Bangladeshi fans to see how their favorite international musicians are doing in their own region. So\u00a0We humbly ask for transparent Spotify charts in Bangladesh that reflect listeners\u2019 real streams and support local artists. It\u2019s time for accurate rankings, fair data and equal visibility for the Bangladeshi music industry. We hope this idea finds you in great health and is given a thought by Spotify Team. Thank You!",
+        "source": "community",
+        "url": "https://community.spotify.com/t5/Live-Ideas/Add-Spotify-Chart-for-Bangladesh/idi-p/7351163"
+      },
+      {
+        "text": "How many times have you listened to a certain song?. It would be nice if you are listening to a song, that you can see how many times you have listened to/played this song",
+        "source": "community",
+        "url": "https://community.spotify.com/t5/Live-Ideas/How-many-times-have-you-listened-to-a-certain-song/idi-p/5713248"
+      },
+      {
+        "text": "[Mobile][Search] Shazam-like option within the app. Being able to source a song you hear without leaving the app",
+        "source": "community",
+        "url": "https://community.spotify.com/t5/Live-Ideas/Mobile-Search-Shazam-like-option-within-the-app/idi-p/5523662"
+      }
+    ],
+    "workout_tempo_listener": [
+      {
+        "text": "Do not limit Audiobook listening. I'm not an expert on the economics of audiobooks, but the reason that Spotify is great is that you get access to all of the music in the catalog and you can enjoy it as much as you like for a flat monthly fee. Spotify has introduced all sorts of insane new problems by limiting the amount of time listened.\u00a0 These are just a few examples: - Do the hours count for multiple people on family/duo accounts? - How to deal with getting cut off in the middle of a book? Instead, make Audiobook consumption unlimited JUST like is done for podcasts and music, etc. If you need to raise the price of the membership then do so.\u00a0 If you need to make an \"audiobook\" add-on subscription then do so. Do NOT limit the number of hours audiobooks or any other kind of media can be consumed.\u00a0 It's a terrible user experience and is a complete about-face to the model Spotify used to become the dominant music streaming service",
+        "source": "community",
+        "url": "https://community.spotify.com/t5/Live-Ideas/Do-not-limit-Audiobook-listening/idi-p/5714464"
+      },
+      {
+        "text": "Increase the number of pinned playlists. It\u2019s 2025, and it\u2019s still not possible to pin more than four playlists. I truly believe it\u2019s much more important to improve basic functions before adding more and more new features. This issue has been known since around 2021, and I really think Spotify needs to prioritize what should be done first. Still, I want to sincerely thank you for all your hard work, as I have really enjoyed using Spotify for a very long time",
+        "source": "community",
+        "url": "https://community.spotify.com/t5/Live-Ideas/Increase-the-number-of-pinned-playlists/idi-p/7152663"
+      },
+      {
+        "text": "Guest mode so if others play music won't affect my algorithm. Hello Spotify team, I think the app really needs a Guest Mode. When I give my phone to a friend to play music, their songs affect my recommendations. For example, I listen to heavy metal, but if my friend listens to other genres, the algorithm gets confused and shows me suggestions I don\u2019t like. A Guest Mode would let friends play music without changing my history or recommendations. Thank you,",
+        "source": "community",
+        "url": "https://community.spotify.com/t5/Live-Ideas/Guest-mode-so-if-others-play-music-won-t-affect-my-algorithm/idi-p/7098721"
+      }
+    ]
+  },
+  "total_relevant": 871,
+  "total_rows": 2905
+}
