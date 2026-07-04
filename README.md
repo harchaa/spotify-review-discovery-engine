@@ -118,17 +118,43 @@ scrapes or calls the LLM itself.
 
 ### Deploying
 
-Push this repo to GitHub, then deploy on
-[Streamlit Community Cloud](https://streamlit.io/cloud) pointing at `app.py`.
-Add `LLM_PROVIDER` and the matching API key (`GEMINI_API_KEY` or `GROQ_API_KEY`)
-as secrets in the Streamlit Cloud app settings (Settings -> Secrets) rather than
-committing `.env`. You'll need to run the pipeline somewhere with the key
-(locally or in CI) and commit/upload the resulting `data/*.csv` and
-`data/*.json` files, since Streamlit Cloud doesn't run `run_pipeline.py` for
-you and the app only reads saved data.
+Deploy on [Streamlit Community Cloud](https://streamlit.io/cloud) pointing at
+`app.py` in this repo. Add `LLM_PROVIDER` and the matching API key
+(`GEMINI_API_KEY` or `GROQ_API_KEY`) as secrets in the Streamlit Cloud app
+settings (Settings -> Secrets) rather than committing `.env` — Streamlit Cloud
+only needs these if you want to trigger a manual re-run from within the app;
+it otherwise just reads whatever `data/*.csv`/`*.json` files are already
+committed (see below).
 
 - Live dashboard: _add the Streamlit Community Cloud URL here after deploying_
-- Repo: _add the GitHub repo URL here_
+- Repo: [github.com/harchaa/spotify-review-discovery-engine](https://github.com/harchaa/spotify-review-discovery-engine)
+
+### Keeping data fresh: weekly GitHub Action
+
+`.github/workflows/weekly-scrape.yml` re-runs the full pipeline every Monday
+(and on-demand via the Actions tab -> "Weekly Spotify Review Scrape" -> "Run
+workflow") and commits the refreshed `data/*.csv`/`*.json` files back to
+`main`, so both the repo and the deployed dashboard stay current without
+anyone running the pipeline by hand. It needs `LLM_PROVIDER` and
+`GEMINI_API_KEY`/`GROQ_API_KEY` set as repository secrets (Settings -> Secrets
+and variables -> Actions) — already configured for this repo.
+
+This is why `data/reviews.csv`, `data/tagged.csv`, `data/summary_tables.json`,
+`data/six_question_answers.json`, and `data/pipeline_summary.json` are
+committed rather than gitignored (see the comment in `.gitignore`) — a
+"weekly refresh" only means something if the refreshed data is actually in
+the repo. `data/reviews_raw.csv`/`.json` (the pre-recency-filter dump) and
+`data/llm_cache/` (per-row LLM response cache) stay gitignored; the workflow
+persists the cache between runs with `actions/cache` instead, so a run that
+can't finish tagging everything in one shot (free-tier quotas — see "LLM
+provider" above) doesn't lose progress and doesn't re-pay for rows it already
+tagged last week.
+
+One thing this required fixing: `answer_six_questions()` used to cache its six
+answers under a fixed key forever, which would have made a recurring pipeline
+run keep showing the *first* run's answers indefinitely even as the
+underlying data changed week to week. It now always regenerates
+(`force=True`) so the six answers stay current.
 
 ## Testing
 

@@ -1,0 +1,62 @@
+name: Weekly Spotify Review Scrape
+
+# Re-scrapes all three sources, re-runs recency filtering + LLM tagging +
+# aggregation, and commits the refreshed data/ output back to the repo so the
+# deployed Streamlit dashboard always reflects roughly the last week's data.
+#
+# Safe to run on a free LLM tier: run_pipeline.py caches LLM responses per
+# row id and stops early (without failing the job) if it hits a permanent
+# quota limit, so a run that can't finish in one shot still commits whatever
+# it completed and picks up the rest next week.
+on:
+  schedule:
+    - cron: "0 6 * * 1" # every Monday 06:00 UTC
+  workflow_dispatch: {}
+
+concurrency:
+  group: weekly-scrape
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  scrape-tag-aggregate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: "pip"
+
+      - name: Restore LLM response cache
+        uses: actions/cache@v4
+        with:
+          path: data/llm_cache
+          key: llm-cache-${{ github.run_id }}
+          restore-keys: |
+            llm-cache-
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run pipeline (scrape, merge, filter, tag, aggregate)
+        env:
+          LLM_PROVIDER: ${{ secrets.LLM_PROVIDER }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+        run: python run_pipeline.py
+
+      - name: Commit refreshed data
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/reviews.csv data/reviews.json data/tagged.csv data/tagged.json \
+                  data/summary_tables.json data/six_question_answers.json data/pipeline_summary.json
+          git diff --staged --quiet && echo "No data changes this run" || git commit -m "Weekly data refresh: $(date -u +%Y-%m-%d)"
+          git push
