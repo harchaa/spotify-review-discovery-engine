@@ -142,7 +142,13 @@ def _run_batched(
     for batch_num, batch in enumerate(batches, start=1):
         ids = [rid for rid, _ in batch]
         try:
-            parsed = client.generate_json(_batch_key(kind, ids), prompt_builder(batch))
+            # force=True: rows only reach batching once already known to need a
+            # fresh answer (the per-row cache check above already filtered out
+            # anything cached), so a batch-level cache serves no purpose here and
+            # would actively defeat retrying a row the model dropped from its
+            # response - the batch key is deterministic on this row set, so a
+            # cached incomplete response would keep coming back on every retry.
+            parsed = client.generate_json(_batch_key(kind, ids), prompt_builder(batch), force=True)
         except Exception as exc:
             if not is_quota_exhausted(exc):
                 raise
@@ -173,8 +179,13 @@ def _run_batched(
         for row_id, _ in batch:
             raw = by_id.get(str(row_id))
             if raw is None:
-                logger.warning("%s: model returned no result for id=%s, using defaults", kind, row_id)
-                raw = {}
+                # Don't cache this: the model just dropped this id from an otherwise
+                # successful batch response (not a firm judgment call), so caching a
+                # default here would make it permanent. Leaving it uncached means the
+                # next run's per-row cache-check treats it as still pending and retries.
+                logger.warning("%s: model returned no result for id=%s, using defaults for this run (will retry next run)", kind, row_id)
+                results[row_id] = validator({})
+                continue
             validated = validator(raw)
             client.set_cached(f"{kind}:{row_id}", validated)
             results[row_id] = validated

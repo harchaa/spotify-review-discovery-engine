@@ -144,6 +144,32 @@ def test_relevance_filter_missing_id_in_response_defaults_false(tmp_path, monkey
     assert bool(result.iloc[0]["relevant"]) is False
 
 
+def test_relevance_filter_does_not_cache_a_row_the_model_dropped_from_its_response(tmp_path, monkeypatch):
+    # Regression test: a row missing from an otherwise-successful batch response
+    # isn't a firm "not relevant" judgment, just the model forgetting to answer -
+    # caching that default would make it stick forever. It should stay uncached
+    # so the next run's cache-check treats it as still pending and retries it.
+    client = make_client(tmp_path)
+    df = _df([("r1", "play_store", "some text", 3, 0, "us", "2026-01-01", "u", "en")])
+    calls = []
+
+    def call_missing_then_found(prompt):
+        calls.append(prompt)
+        if len(calls) == 1:
+            return json.dumps({"results": []})  # first run: model forgets r1
+        return json.dumps({"results": [{"id": "r1", "relevant": True}]})  # second run: answers it
+
+    monkeypatch.setattr(client, "_call_model", call_missing_then_found)
+
+    first_run = apply_relevance_filter(client, df)
+    assert bool(first_run.iloc[0]["relevant"]) is False
+    assert client.get_cached("relevance:r1") is None  # not cached - still pending
+
+    second_run = apply_relevance_filter(client, df)
+    assert bool(second_run.iloc[0]["relevant"]) is True  # retried and got a real answer
+    assert len(calls) == 2  # both runs actually called the model for r1
+
+
 def test_relevance_filter_survives_a_non_dict_item_in_results(tmp_path, monkeypatch):
     # Regression test: smaller/less reliable models can emit a malformed shape
     # even in JSON mode (e.g. a bare string instead of an object), which used to
