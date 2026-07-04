@@ -1,8 +1,8 @@
 # AI-Powered Review Discovery Engine (Spotify)
 
 A Phase 1 deliverable for a Spotify Growth Team graduation project: scrape real user
-feedback about Spotify, tag it with an LLM, and surface why users struggle to
-discover new music in a Streamlit dashboard.
+feedback about Spotify, tag it with an LLM, and let you explore why users struggle
+to discover new music through a chat interface and an analytics dashboard.
 
 ## What this actually does
 
@@ -16,33 +16,42 @@ discover new music in a Streamlit dashboard.
 4. **Analyze with an LLM** (Gemini by default, Groq as a fallback — see
    "LLM provider" below): a relevance filter, then structured tagging (sentiment,
    theme, job-to-be-done, user segment, severity) (`data/tagged.csv`).
-5. **Aggregate** into theme/segment tables, ranked unmet needs, representative
-   quotes, and evidence-grounded answers to six product questions
-   (`data/summary_tables.json`, `data/six_question_answers.json`).
-6. **Present** all of it in a Streamlit dashboard (`app.py`).
+5. **Aggregate** into theme/segment tables, ranked unmet needs, and representative
+   quotes (`data/summary_tables.json`).
+6. **Present** it two ways in a Streamlit app (`app.py`): a **Chat** page where you
+   ask your own questions and get answers grounded in that aggregated evidence
+   (including a fixed set of six starter questions the brief called out), and an
+   **Analytics** page with the charts, tables, and drill-downs.
 
-## Results from the latest full run
+## Results from the most recent pipeline run (numbers change weekly — see below)
 
-- **3,810** items scraped (842 Google Play, 1,468 App Store, 1,500 Community),
-  **2,905** kept after the recency filter.
-- **871 / 2,905** rows tagged relevant to discovery, recommendations, or repetition.
-- **9 themes** and all **6 user segments** represented; top theme is
-  `filter_bubble_overpersonalization` (42.3% of weighted mentions), followed by
-  `discovery_buried_in_ui` (12.5%) and `poor_new_release_surfacing` (10.1%).
-- All **6 product questions** answered by the LLM, grounded in the aggregated
-  tables above (see `data/six_question_answers.json` after running the pipeline).
+- **1,443** items kept after the recency filter, of which **349** were tagged
+  relevant to discovery, recommendations, or repetition; **9 themes** and all
+  **6 user segments** represented.
+- This particular run hit Groq's free-tier rate limits partway through
+  structured tagging, so an unusually large share of relevant rows defaulted to
+  theme `"other"` (the safe fallback for a row the model never got to — see
+  "LLM provider" below) rather than reflecting a real shift in what users are
+  saying. Re-running fills those in from where the cache left off.
+- All **6 starter questions** answered by the LLM, grounded in the aggregated
+  tables (`data/six_question_answers.json`).
+- This run also confirms a real limitation: **App Store returned 0 rows** when
+  scraped from a GitHub Actions runner (same code worked locally, ~1,468 rows) —
+  see "What each source actually returns" below.
 
 ## Repo layout
 
 ```
 scrapers/       play_store.py, app_store.py, community.py — one scraper per source
-analysis/       merge.py, cleaning.py, llm_client.py, tagging.py, aggregate.py
+analysis/       merge.py, cleaning.py, llm_client.py, tagging.py, aggregate.py, chat.py
+views/          chat.py, analytics.py — the two Streamlit pages
+ui_common.py    data loading + chart/formatting helpers shared by both pages
 tests/          pytest suite, one file per module, mocks all network/LLM calls
 scripts/        manual diagnostic tools that make real API calls (not run by pytest)
 data/           raw + filtered + tagged output, LLM cache (gitignored)
 config.py       recency-window settings (single source of truth)
 run_pipeline.py scrape -> merge/dedupe/language-detect -> recency filter -> LLM tag -> aggregate
-app.py          Streamlit dashboard, reads only saved data under data/
+app.py          Streamlit entry point: st.navigation between Chat and Analytics
 ```
 
 ## Setup
@@ -107,14 +116,43 @@ recency filter, relevant-row counts). LLM responses are cached on disk under
 failure (including a rate-limit/quota stop) does not re-spend API calls on
 rows already tagged — it picks up where the last run left off.
 
-## Running the dashboard
+## Running the app
 
 ```bash
 streamlit run app.py
 ```
 
-Reads exclusively from `data/` (the files `run_pipeline.py` wrote) — it never
-scrapes or calls the LLM itself.
+Opens to **Chat** by default, with **Analytics** as the second page (left sidebar
+navigation). Both read exclusively from `data/` (the files `run_pipeline.py`
+wrote) for the review data and aggregated tables — neither page scrapes.
+
+### Chat
+
+Free-form Q&A over the aggregated evidence (`analysis/chat.py`), not a canned
+FAQ: every answer is generated live from the current theme/segment/unmet-needs
+tables and sample quotes, using the same LLM provider as the pipeline
+(`LLMClient.generate_text`, uncached since a chat turn isn't safe to dedupe).
+Six starter-question buttons cover the brief's original questions, but you can
+ask anything. Two things this was explicitly tested for:
+
+- **Off-topic questions get a plain refusal + a redirect**, not a hallucinated
+  answer — e.g. asking "what's the capital of France?" gets *"I'm not able to
+  answer that question as it's unrelated to Spotify feedback or music
+  discovery... would you like me to look into [a related question] instead?"*
+- **Multi-turn context works** - a follow-up like "which one affects focus/work
+  listeners the most?" correctly resolves "which one" against the prior turn's
+  answer, since the last 8 turns of conversation are included in every prompt.
+
+If tagging hasn't finished yet (no `summary_tables.json` with any relevant
+rows), Chat says so directly instead of trying to answer from nothing.
+
+### Analytics
+
+The charts/tables view: overview stats, then Themes / Segments / Unmet needs in
+tabs (not stacked in one long scroll), each with drill-down quotes. The old
+per-question text blocks live in Chat now instead of a static wall of text
+here. Methodology and limitations are in a collapsed expander at the very
+bottom, out of the way of the actual insights.
 
 ### Deploying
 
@@ -162,19 +200,25 @@ underlying data changed week to week. It now always regenerates
 pytest
 ```
 
-The suite (115 tests) mocks every network and LLM call, so it runs in under two
-seconds with no API key or internet access required. Each module's tests were
-written and run before moving to the next phase, and several were added *after*
-real bugs surfaced during live end-to-end runs (noted below):
+The suite (134 tests) mocks every network and LLM call, so it runs in under
+three seconds with no API key or internet access required. Each module's
+tests were written and run before moving to the next phase, and several were
+added *after* real bugs surfaced during live end-to-end runs (noted below):
 
 | Phase | Module(s) | What's tested |
 |---|---|---|
 | 1 | `scrapers/*.py` | field mapping into the unified schema, pagination, malformed/missing API fields, network failures degrade to an empty result instead of crashing, a stalled connection times out instead of hanging forever |
 | 2 | `analysis/merge.py`, `analysis/cleaning.py` | dedup of near-identical text, language detection edge cases (short/empty/non-English text), recency-cutoff boundaries, community vote-weighted exception, date ranges spanning mixed naive/timezone-aware timestamps |
-| 3 | `analysis/llm_client.py` | cache hit/miss, retry+backoff on transient failures, cache-key collision safety, force-refresh, missing API key only fails when the model is actually called, a bounded request timeout is always set, provider switching (Gemini/Groq) picks the right model/env var, quota-exhaustion detection walks the exception cause chain and provider-specific status codes |
+| 3 | `analysis/llm_client.py` | cache hit/miss, retry+backoff on transient failures, cache-key collision safety, force-refresh, missing API key only fails when the model is actually called, a bounded request timeout is always set, provider switching (Gemini/Groq) picks the right model/env var, quota-exhaustion detection walks the exception cause chain and provider-specific status codes, plain-text generation is never cached |
 | 3 | `analysis/tagging.py` | batching, per-row cache reuse across runs, enum validation (invalid theme/segment/sentiment fall back to safe defaults), severity clamping, only relevant rows get tagged, a permanent quota failure stops early with partial results instead of crashing, malformed/non-dict items in a model response are skipped instead of crashing the batch |
 | 4 | `analysis/aggregate.py` | theme/segment weighting (community votes), ranked unmet needs, representative-quote selection and ordering, six-question answer caching, quota exhaustion mid-way through the six questions keeps the answers already generated |
-| 5 | `app.py` | chart data shaping and quote-selection logic, date-range display over mixed timestamp formats (the dashboard was also smoke-tested live with `streamlit run`, both against fixture data and the real tagged output) |
+| 5 | `ui_common.py` | chart data shaping and quote-selection logic, date-range display over mixed timestamp formats |
+| 6 | `analysis/chat.py` | evidence formatting into the chat prompt, history capping, short-circuiting (no model call) on an empty question or missing data, friendly message on quota exhaustion, non-quota errors still propagate |
+
+Both Streamlit pages were also smoke-tested live: headless `streamlit run`,
+Streamlit's own `AppTest` harness (which actually executes the page script and
+surfaces exceptions), and real chat interactions including the off-topic and
+multi-turn cases described above.
 
 ### Bugs found during live end-to-end runs (not caught by mocked tests alone)
 
@@ -185,6 +229,7 @@ Real scraping and real LLM calls surfaced failure modes that unit tests with moc
 - Mixing naive and timezone-aware ISO date strings in one column made `pd.to_datetime(..., utc=True)` silently return `NaT` for every format but the first one seen, understating the real date range (2012-2026) as a single day — fixed by parsing dates row-by-row instead of vectorized.
 - A permanent LLM failure (daily quota exhaustion) used to crash the whole pipeline and discard everything tagged earlier in that same run — fixed so a detected quota exhaustion stops the current stage early and keeps partial results; the per-row cache means a later run resumes rather than re-paying for already-tagged rows.
 - A smaller/faster model (`llama-3.1-8b-instant`, used to work around Groq's stricter free-tier cap on the 70B model) occasionally returned a malformed item inside a JSON response's `results` array (e.g. a bare string instead of an object) even with JSON mode requested — fixed by validating each item's shape defensively instead of assuming the model always follows the schema.
+- `run_pipeline.py`'s "should I skip the LLM step" check hardcoded a `GEMINI_API_KEY` lookup, so the very first weekly-scrape CI run had `LLM_PROVIDER=groq` and a valid `GROQ_API_KEY` but still silently skipped tagging (wrong key checked) — and then committed an untagged `reviews.csv` over the real tagged one. Fixed by reusing `llm_client.py`'s own provider-to-env-var mapping instead of a hardcoded name.
 
 ## Adversarial / prompt-injection testing
 
@@ -243,7 +288,14 @@ signature the contaminated run showed.
   that parameter) — dropping `sortby=mostrecent` and using the feed's default
   ordering returns real reviews, so that's what the scraper does. This is a
   live discovery, not a documented Apple behavior change, so it's worth
-  re-checking if this scraper is reused later.
+  re-checking if this scraper is reused later. **This works locally but returns
+  0 rows for every country when run from a GitHub Actions runner** (same code,
+  same day) — no error, no 429, just an empty `entry` list on an otherwise
+  normal-looking 200 response. Apple appears to treat shared cloud/CI IP
+  ranges differently. `_fetch_page` now logs the response status and feed keys
+  whenever this happens (see `scrapers/app_store.py`) to help debug further if
+  it keeps happening; for now the weekly Action simply runs without App Store
+  data most weeks.
 - **Spotify Community** (Khoros LiQL search API): **1,500 real ideas/discussion
   posts** with kudos counts, restricted to the boards most likely to carry
   discovery/recommendation feedback (`ideas_live`, `ideas_no`,
@@ -280,7 +332,10 @@ run, and the dashboard's Overview section states the window explicitly.
 - **Reddit is excluded.** Its Data API now requires a moderation-use-case
   request with an approval delay that doesn't fit this project's timeline.
 - **App Store coverage is capped** by the public RSS feed (~500 reviews/country,
-  no working recency sort — see above).
+  no working recency sort — see above), **and is currently 0 rows when the
+  pipeline runs on GitHub Actions** specifically (works locally) — see "What
+  each source actually returns" above. The weekly Action's data is short
+  Google Play + Community only until/unless that's resolved.
 - **Non-English reviews are kept**, not dropped. They're language-tagged via
   `langdetect` and the LLM reasons over the original text, so the theme/segment
   tags may be noisier for low-resource languages.

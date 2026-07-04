@@ -228,3 +228,57 @@ def test_groq_call_model_uses_chat_completions_with_json_response_format(tmp_pat
     assert kwargs["model"] == "llama-3.1-8b-instant"
     assert kwargs["messages"] == [{"role": "user", "content": "classify this"}]
     assert kwargs["response_format"] == {"type": "json_object"}
+
+
+def test_groq_call_model_omits_response_format_when_not_json_mode(tmp_path):
+    client = LLMClient(provider="groq", api_key="fake", cache_dir=tmp_path)
+    fake_response = type(
+        "FakeResponse",
+        (),
+        {"choices": [type("Choice", (), {"message": type("Msg", (), {"content": "a conversational reply"})()})()]},
+    )()
+
+    with patch("groq.Groq") as mock_groq_cls:
+        mock_groq_cls.return_value.chat.completions.create.return_value = fake_response
+        result = client._call_model("chat about this", json_mode=False)
+
+    assert result == "a conversational reply"
+    _, kwargs = mock_groq_cls.return_value.chat.completions.create.call_args
+    assert "response_format" not in kwargs
+
+
+def test_generate_text_returns_plain_string_and_is_never_cached(tmp_path, monkeypatch):
+    client = make_client(tmp_path)
+    calls = []
+    monkeypatch.setattr(client, "_call_model", lambda prompt, json_mode=True: (calls.append(json_mode), "a natural language answer")[1])
+
+    result = client.generate_text("what do users think about discovery?")
+    result2 = client.generate_text("what do users think about discovery?")
+
+    assert result == "a natural language answer"
+    assert calls == [False, False]  # json_mode=False both times, no caching to skip the second call
+    assert list(tmp_path.glob("*.json")) == []  # generate_text never writes to the response cache
+
+
+def test_generate_text_retries_then_raises_after_exhausting_attempts(tmp_path, monkeypatch):
+    client = make_client(tmp_path)
+    monkeypatch.setattr(client, "_call_model", lambda prompt, json_mode=True: (_ for _ in ()).throw(RuntimeError("down")))
+
+    with pytest.raises(RuntimeError, match="Gemini call failed after"):
+        client.generate_text("a question")
+
+
+def test_generate_text_recovers_from_a_transient_failure(tmp_path, monkeypatch):
+    client = make_client(tmp_path)
+    attempts = {"count": 0}
+
+    def flaky(prompt, json_mode=True):
+        attempts["count"] += 1
+        if attempts["count"] < 2:
+            raise RuntimeError("429 RESOURCE_EXHAUSTED")
+        return "recovered answer"
+
+    monkeypatch.setattr(client, "_call_model", flaky)
+
+    assert client.generate_text("a question") == "recovered answer"
+    assert attempts["count"] == 2

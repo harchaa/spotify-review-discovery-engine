@@ -104,20 +104,16 @@ class LLMClient:
                 )
         return self._client
 
-    def _call_model(self, prompt: str) -> str:
+    def _call_model(self, prompt: str, json_mode: bool = True) -> str:
         client = self._get_client()
         if self.provider == "groq":
-            response = client.chat.completions.create(
-                model=self.model,
-                messages=[{"role": "user", "content": prompt}],
-                response_format={"type": "json_object"},
-            )
+            kwargs: dict[str, Any] = {"model": self.model, "messages": [{"role": "user", "content": prompt}]}
+            if json_mode:
+                kwargs["response_format"] = {"type": "json_object"}
+            response = client.chat.completions.create(**kwargs)
             return response.choices[0].message.content
-        response = client.models.generate_content(
-            model=self.model,
-            contents=prompt,
-            config={"response_mime_type": "application/json"},
-        )
+        config = {"response_mime_type": "application/json"} if json_mode else {}
+        response = client.models.generate_content(model=self.model, contents=prompt, config=config)
         return response.text
 
     def _cache_path(self, cache_key: str) -> Path:
@@ -170,3 +166,26 @@ class LLMClient:
             return parsed
 
         raise RuntimeError(f"Gemini call failed after {MAX_RETRIES} attempts for cache_key={cache_key}") from last_exc
+
+    def generate_text(self, prompt: str) -> str:
+        """Plain-text (non-JSON) generation for conversational chat turns.
+
+        Never cached: unlike generate_json's fixed per-row/per-question cache
+        keys, a chat turn's key would have to be the user's free-text
+        question, which isn't safe to reuse across sessions or dedupe
+        sensibly (nearly-identical questions should still get answered
+        fresh). Retries with the same backoff as generate_json.
+        """
+        last_exc: Exception | None = None
+        for attempt in range(1, MAX_RETRIES + 1):
+            try:
+                return self._call_model(prompt, json_mode=False)
+            except Exception as exc:
+                last_exc = exc
+                if attempt == MAX_RETRIES:
+                    break
+                wait = BASE_BACKOFF_SECONDS * (2 ** (attempt - 1))
+                logger.warning("generate_text attempt=%s failed (%s); retrying in %ss", attempt, exc, wait)
+                time.sleep(wait)
+
+        raise RuntimeError(f"Gemini call failed after {MAX_RETRIES} attempts for chat prompt") from last_exc
