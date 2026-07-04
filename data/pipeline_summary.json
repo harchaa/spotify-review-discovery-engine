@@ -1,19 +1,20 @@
 {
   "merge": {
-    "total_rows": 2347,
+    "total_rows": 3810,
     "rows_per_source": {
+      "app_store": 1468,
       "community": 1500,
-      "play_store": 847
+      "play_store": 842
     },
     "date_range": [
       "2012-02-09",
-      "2026-07-03"
+      "2026-07-02"
     ],
-    "pct_non_english": 8.1
+    "pct_non_english": 20.1
   },
   "recency": {
-    "cutoff_date": "2024-07-14",
-    "rows_kept": 1442,
+    "cutoff_date": "2024-07-13",
+    "rows_kept": 2905,
     "rows_lost_per_source": {
       "play_store": 0,
       "app_store": 0,
@@ -21,19 +22,22 @@
     },
     "date_range": [
       "2023-01-25",
-      "2026-07-03"
+      "2026-07-02"
     ],
     "source_date_ranges": {
       "play_store": [
         "2026-07-01",
-        "2026-07-03"
+        "2026-07-02"
       ],
-      "app_store": null,
+      "app_store": [
+        "2026-06-15",
+        "2026-07-02"
+      ],
       "community": [
         "2023-01-25",
-        "2026-07-02"
+        "2026-07-01"
       ]
     }
   },
-  "skipped_llm": true
+  "skipped_llm": false
 }
