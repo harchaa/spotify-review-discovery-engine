@@ -7,7 +7,6 @@ import pandas as pd
 import plotly.graph_objects as go
 import streamlit as st
 
-from analysis.cleaning import parse_date
 
 DATA_DIR = Path(__file__).resolve().parent / "data"
 REVIEWS_PATH = DATA_DIR / "reviews.csv"
@@ -81,16 +80,6 @@ def load_summary_tables() -> dict | None:
 
 def load_six_question_answers() -> dict | None:
     return load_json(str(ANSWERS_PATH))
-
-
-def overview_date_range(reviews_df: pd.DataFrame) -> str:
-    # Row-wise parsing, not pd.to_datetime(..., utc=True): the raw "date" column mixes
-    # naive and tz-aware ISO strings across sources, and pandas' vectorized parser
-    # silently coerces every format but the first-seen one to NaT.
-    dates = reviews_df["date"].apply(parse_date).dropna()
-    if dates.empty:
-        return "n/a"
-    return f"{dates.min()} — {dates.max()}"
 
 
 def ranked_bar_chart(records: list[dict], label_col: str, value_col: str, labels: dict, color: str, dark: bool, x_title: str):

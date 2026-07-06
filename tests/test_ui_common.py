@@ -1,5 +1,3 @@
-import pandas as pd
-
 import ui_common
 
 
@@ -66,24 +64,3 @@ def test_quotes_for_segments_skips_segments_with_no_quotes():
     pool = {"focus_work_listener": [], "genre_explorer_filter_bubble": [{"text": "g1"}]}
     result = ui_common.quotes_for_segments(pool, limit=5)
     assert result == [{"text": "g1"}]
-
-
-def test_overview_date_range_spans_mixed_naive_and_tz_aware_dates():
-    # Regression test: pd.to_datetime(..., utc=True) on a column mixing naive
-    # (Google Play) and tz-aware (App Store, Community) ISO strings previously
-    # coerced every format but the first-seen one to NaT, understating the range.
-    df = pd.DataFrame(
-        {
-            "date": [
-                "2014-03-06T16:35:50.919+01:00",
-                "2026-06-15T18:19:19-07:00",
-                "2026-07-02T14:50:06",
-            ]
-        }
-    )
-    assert ui_common.overview_date_range(df) == "2014-03-06 — 2026-07-02"
-
-
-def test_overview_date_range_empty_or_unparseable_returns_na():
-    df = pd.DataFrame({"date": ["not-a-date", None]})
-    assert ui_common.overview_date_range(df) == "n/a"

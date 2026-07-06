@@ -19,7 +19,6 @@ from ui_common import (  # noqa: E402
     is_dark_theme,
     load_reviews,
     load_summary_tables,
-    overview_date_range,
     ranked_bar_chart,
     render_quote,
 )
@@ -35,12 +34,11 @@ if reviews_df is None or reviews_df.empty:
     st.stop()
 
 with st.container(border=True):
-    cols = st.columns(4)
+    cols = st.columns(3)
     cols[0].metric("Items analyzed", f"{len(reviews_df):,}")
     source_counts = reviews_df["source"].value_counts()
     cols[1].metric("Sources", len(source_counts))
-    cols[2].metric("Date range", overview_date_range(reviews_df))
-    cols[3].metric("Recency window", f"{RECENCY_MONTHS} months")
+    cols[2].metric("Recency window", f"{RECENCY_MONTHS} months")
     st.caption("Source mix: " + " · ".join(f"{src}: {n:,}" for src, n in source_counts.items()))
 
 summary = load_summary_tables()
