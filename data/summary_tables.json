@@ -2,89 +2,89 @@
   "themes": [
     {
       "theme": "other",
-      "count": 222,
-      "weighted_count": 40044,
-      "share": 0.8266
+      "count": 228,
+      "weighted_count": 40308,
+      "share": 0.8272
     },
     {
       "theme": "trust_in_recs",
-      "count": 17,
-      "weighted_count": 2496,
-      "share": 0.0515
+      "count": 21,
+      "weighted_count": 2501,
+      "share": 0.0513
     },
     {
       "theme": "discovery_buried_in_ui",
       "count": 34,
-      "weighted_count": 1860,
-      "share": 0.0384
+      "weighted_count": 1879,
+      "share": 0.0386
     },
     {
       "theme": "discovery_breaks_focus",
-      "count": 14,
-      "weighted_count": 1333,
-      "share": 0.0275
+      "count": 19,
+      "weighted_count": 1268,
+      "share": 0.026
     },
     {
       "theme": "filter_bubble_overpersonalization",
-      "count": 21,
+      "count": 16,
       "weighted_count": 884,
-      "share": 0.0182
+      "share": 0.0181
     },
     {
       "theme": "no_control_over_algorithm",
-      "count": 6,
+      "count": 5,
       "weighted_count": 831,
-      "share": 0.0172
+      "share": 0.0171
     },
     {
       "theme": "repetition_fatigue",
-      "count": 15,
-      "weighted_count": 433,
-      "share": 0.0089
-    },
-    {
-      "theme": "stale_recommendations",
-      "count": 11,
-      "weighted_count": 301,
-      "share": 0.0062
+      "count": 20,
+      "weighted_count": 440,
+      "share": 0.009
     },
     {
       "theme": "poor_new_release_surfacing",
-      "count": 11,
-      "weighted_count": 260,
-      "share": 0.0054
+      "count": 20,
+      "weighted_count": 311,
+      "share": 0.0064
+    },
+    {
+      "theme": "stale_recommendations",
+      "count": 9,
+      "weighted_count": 305,
+      "share": 0.0063
     }
   ],
   "segments": [
     {
-      "use_case_segment": "other",
-      "count": 115,
-      "share": 0.3276
+      "use_case_segment": "focus_work_listener",
+      "count": 123,
+      "share": 0.3306
     },
     {
-      "use_case_segment": "focus_work_listener",
+      "use_case_segment": "other",
       "count": 91,
-      "share": 0.2593
+      "share": 0.2446
     },
     {
       "use_case_segment": "genre_explorer_filter_bubble",
-      "count": 80,
-      "share": 0.2279
+      "count": 84,
+      "share": 0.2258
     },
     {
       "use_case_segment": "mood_context_listener",
-      "count": 53,
-      "share": 0.151
+      "count": 61,
+      "share": 0.164
     },
     {
       "use_case_segment": "discovery_seeker_distrusts_algo",
       "count": 9,
-      "share": 0.0256
+      "share": 0.0242
     },
     {
       "use_case_segment": "workout_tempo_listener",
-      "count": 3,
-      "share": 0.0085
+      "count": 4,
+      "share": 0.0108
     }
   ],
   "segment_details": {
@@ -92,20 +92,20 @@
       "top_themes": [
         {
           "theme": "discovery_buried_in_ui",
-          "count": 4
+          "count": 3
+        },
+        {
+          "theme": "filter_bubble_overpersonalization",
+          "count": 2
         },
         {
           "theme": "repetition_fatigue",
           "count": 2
-        },
-        {
-          "theme": "no_control_over_algorithm",
-          "count": 1
         }
       ],
       "top_jobs": [
-        "skip tracks",
-        "using a music streaming service without restrictions",
+        "block AI \"artists\" altogether or remove fake music",
+        "remove subscriptions",
         "Find alternative ways to discover new music"
       ]
     },
@@ -113,32 +113,32 @@
       "top_themes": [
         {
           "theme": "other",
-          "count": 44
+          "count": 60
         },
         {
           "theme": "discovery_buried_in_ui",
-          "count": 12
+          "count": 18
         },
         {
           "theme": "repetition_fatigue",
-          "count": 9
+          "count": 10
         }
       ],
       "top_jobs": [
-        "enjoy ad-free music experience",
-        "listen to music without restrictions",
-        "discover music trends in Bangladesh"
+        "evaluate app quality",
+        "listen to music",
+        "enjoy music"
       ]
     },
     "genre_explorer_filter_bubble": {
       "top_themes": [
         {
           "theme": "other",
-          "count": 33
+          "count": 45
         },
         {
-          "theme": "discovery_buried_in_ui",
-          "count": 11
+          "theme": "trust_in_recs",
+          "count": 10
         },
         {
           "theme": "discovery_breaks_focus",
@@ -146,37 +146,37 @@
         }
       ],
       "top_jobs": [
-        "enjoy Spotify experience",
-        "discover new music",
-        "avoiding ads"
+        "listen to music",
+        "use the app daily",
+        "enjoy music"
       ]
     },
     "mood_context_listener": {
       "top_themes": [
         {
           "theme": "other",
-          "count": 41
+          "count": 42
         },
         {
-          "theme": "discovery_buried_in_ui",
-          "count": 4
+          "theme": "poor_new_release_surfacing",
+          "count": 5
         },
         {
-          "theme": "filter_bubble_overpersonalization",
-          "count": 4
+          "theme": "repetition_fatigue",
+          "count": 3
         }
       ],
       "top_jobs": [
         "enjoy music",
-        "enjoy Spotify experience",
-        "listen to music"
+        "avoid ads",
+        "find and listen to all types of songs"
       ]
     },
     "other": {
       "top_themes": [
         {
           "theme": "other",
-          "count": 100
+          "count": 76
         },
         {
           "theme": "trust_in_recs",
@@ -188,20 +188,21 @@
         }
       ],
       "top_jobs": [
-        "enjoying music",
-        "listen to music",
-        "using a music app"
+        "null",
+        "enjoy music",
+        "listen to existing music"
       ]
     },
     "workout_tempo_listener": {
       "top_themes": [
         {
           "theme": "other",
-          "count": 3
+          "count": 4
         }
       ],
       "top_jobs": [
         "having a varied music playlist",
+        "find a sleep-inducing atmosphere",
         "viewing listening history"
       ]
     }
@@ -211,37 +212,37 @@
       "job_to_be_done": "hear authentic human-created music",
       "theme": "other",
       "count": 1,
-      "weighted_score": 39906.0
+      "weighted_score": 40416.0
     },
     {
       "job_to_be_done": "access playlist radio",
       "theme": "other",
       "count": 1,
-      "weighted_score": 8594.0
+      "weighted_score": 8596.0
     },
     {
       "job_to_be_done": "discover music trends in Bangladesh",
       "theme": "other",
       "count": 2,
-      "weighted_score": 6530.0
+      "weighted_score": 6536.0
     },
     {
       "job_to_be_done": "hide unwanted music",
       "theme": "other",
       "count": 1,
-      "weighted_score": 5151.0
+      "weighted_score": 5157.0
     },
     {
       "job_to_be_done": "create visualizer for music streaming",
       "theme": "other",
       "count": 1,
-      "weighted_score": 3120.0
+      "weighted_score": 3124.0
     },
     {
       "job_to_be_done": "access previous years' stats",
       "theme": "other",
       "count": 1,
-      "weighted_score": 2412.0
+      "weighted_score": 2424.0
     },
     {
       "job_to_be_done": "restore 'Create Similar playlist' feature",
@@ -265,7 +266,7 @@
       "job_to_be_done": "enable playlist auto-updating",
       "theme": "other",
       "count": 1,
-      "weighted_score": 1992.0
+      "weighted_score": 2000.0
     }
   ],
   "quotes_by_theme": {
@@ -288,14 +289,14 @@
     ],
     "discovery_buried_in_ui": [
       {
-        "text": "Music comments. Now I hate to use another music platform as an example, but Soundcloud has a feature that allows you to see comments on a song.\u00a0Why do want this on Spotify? In my personal opinion I think that comments are something that is just nice to see because I like seeing what other peoples thoughts are on a song. Allowing comments would allow a user to see the general public reaction to a song. Example: I like this song, I'm debating whether or not to show it to someone. I check the comments to see what other people have to say about it, if the comments are positive I'm more to likely to listen to the song and share it to others Cons: Negative feedback and bad spam on certain artists.\u00a0 fix: block spam, filter certain words, have a message before a user comments saying that you will be banned from commenting if the comment is harsh towards the artist You could even make a feature that allows the user to turn it on and off if you want to see the comments or not. Like a hide comments button",
-        "source": "community",
-        "url": "https://community.spotify.com/t5/Live-Ideas/Music-comments/idi-p/5637957"
-      },
-      {
         "text": "Music Videos to always play option. I'm loving the music videos whilst using the desktop app but it's annoying that once that song is over the next song just plays normally even if it has a video.\u00a0 I think there should be a \"always play video when available\" option (at least within the desktop app)",
         "source": "community",
         "url": "https://community.spotify.com/t5/Live-Ideas/Music-Videos-to-always-play-option/idi-p/5942744"
+      },
+      {
+        "text": "Music comments. Now I hate to use another music platform as an example, but Soundcloud has a feature that allows you to see comments on a song.\u00a0Why do want this on Spotify? In my personal opinion I think that comments are something that is just nice to see because I like seeing what other peoples thoughts are on a song. Allowing comments would allow a user to see the general public reaction to a song. Example: I like this song, I'm debating whether or not to show it to someone. I check the comments to see what other people have to say about it, if the comments are positive I'm more to likely to listen to the song and share it to others Cons: Negative feedback and bad spam on certain artists.\u00a0 fix: block spam, filter certain words, have a message before a user comments saying that you will be banned from commenting if the comment is harsh towards the artist You could even make a feature that allows the user to turn it on and off if you want to see the comments or not. Like a hide comments button",
+        "source": "community",
+        "url": "https://community.spotify.com/t5/Live-Ideas/Music-comments/idi-p/5637957"
       },
       {
         "text": "Add/remove a song from your liked songs with the press of one button! (heart icon). Please, can we go back to the user\u2019s having the ability to add/remove a song from your liked songs with the press of one button? It\u2019s down right frustrating that we have to now press three different buttons to do this one simple and critical task. The \u201cheart\u201d symbol on the screen in the bottom corner of the song playing was perfect. No idea why this changed, or how on earth I\u2019m the only user to be inconvenienced to the point of taking the time to write this post lol",
@@ -527,6 +528,6 @@
       }
     ]
   },
-  "total_relevant": 351,
-  "total_rows": 1440
+  "total_relevant": 372,
+  "total_rows": 1435
 }

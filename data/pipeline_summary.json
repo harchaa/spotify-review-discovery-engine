@@ -1,37 +1,37 @@
 {
   "merge": {
-    "total_rows": 2345,
+    "total_rows": 2337,
     "rows_per_source": {
       "community": 1500,
-      "play_store": 845
+      "play_store": 837
     },
     "date_range": [
       "2012-02-09",
-      "2026-07-03"
+      "2026-07-12"
     ],
-    "pct_non_english": 7.8
+    "pct_non_english": 7.1
   },
   "recency": {
-    "cutoff_date": "2024-07-14",
-    "rows_kept": 1440,
+    "cutoff_date": "2024-07-23",
+    "rows_kept": 1435,
     "rows_lost_per_source": {
       "play_store": 0,
       "app_store": 0,
-      "community": 905
+      "community": 902
     },
     "date_range": [
       "2023-01-25",
-      "2026-07-03"
+      "2026-07-12"
     ],
     "source_date_ranges": {
       "play_store": [
-        "2026-07-02",
-        "2026-07-03"
+        "2026-07-10",
+        "2026-07-12"
       ],
       "app_store": null,
       "community": [
         "2023-01-25",
-        "2026-07-02"
+        "2026-07-10"
       ]
     }
   },
