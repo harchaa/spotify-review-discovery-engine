@@ -2,89 +2,89 @@
   "themes": [
     {
       "theme": "other",
-      "count": 228,
-      "weighted_count": 40308,
-      "share": 0.8272
+      "count": 258,
+      "weighted_count": 40521,
+      "share": 0.8285
     },
     {
       "theme": "trust_in_recs",
-      "count": 21,
-      "weighted_count": 2501,
-      "share": 0.0513
+      "count": 16,
+      "weighted_count": 2500,
+      "share": 0.0511
     },
     {
       "theme": "discovery_buried_in_ui",
-      "count": 34,
-      "weighted_count": 1879,
-      "share": 0.0386
+      "count": 29,
+      "weighted_count": 1786,
+      "share": 0.0365
     },
     {
       "theme": "discovery_breaks_focus",
       "count": 19,
-      "weighted_count": 1268,
-      "share": 0.026
+      "weighted_count": 1283,
+      "share": 0.0262
     },
     {
       "theme": "filter_bubble_overpersonalization",
-      "count": 16,
-      "weighted_count": 884,
-      "share": 0.0181
+      "count": 21,
+      "weighted_count": 909,
+      "share": 0.0186
     },
     {
       "theme": "no_control_over_algorithm",
-      "count": 5,
-      "weighted_count": 831,
-      "share": 0.0171
+      "count": 7,
+      "weighted_count": 841,
+      "share": 0.0172
     },
     {
       "theme": "repetition_fatigue",
-      "count": 20,
-      "weighted_count": 440,
-      "share": 0.009
-    },
-    {
-      "theme": "poor_new_release_surfacing",
-      "count": 20,
-      "weighted_count": 311,
-      "share": 0.0064
+      "count": 16,
+      "weighted_count": 445,
+      "share": 0.0091
     },
     {
       "theme": "stale_recommendations",
-      "count": 9,
-      "weighted_count": 305,
+      "count": 12,
+      "weighted_count": 318,
+      "share": 0.0065
+    },
+    {
+      "theme": "poor_new_release_surfacing",
+      "count": 12,
+      "weighted_count": 308,
       "share": 0.0063
     }
   ],
   "segments": [
     {
-      "use_case_segment": "focus_work_listener",
-      "count": 123,
-      "share": 0.3306
+      "use_case_segment": "other",
+      "count": 129,
+      "share": 0.3308
     },
     {
-      "use_case_segment": "other",
-      "count": 91,
-      "share": 0.2446
+      "use_case_segment": "focus_work_listener",
+      "count": 112,
+      "share": 0.2872
     },
     {
       "use_case_segment": "genre_explorer_filter_bubble",
-      "count": 84,
-      "share": 0.2258
+      "count": 87,
+      "share": 0.2231
     },
     {
       "use_case_segment": "mood_context_listener",
-      "count": 61,
-      "share": 0.164
+      "count": 46,
+      "share": 0.1179
     },
     {
       "use_case_segment": "discovery_seeker_distrusts_algo",
-      "count": 9,
-      "share": 0.0242
+      "count": 12,
+      "share": 0.0308
     },
     {
       "use_case_segment": "workout_tempo_listener",
       "count": 4,
-      "share": 0.0108
+      "share": 0.0103
     }
   ],
   "segment_details": {
@@ -95,29 +95,29 @@
           "count": 3
         },
         {
-          "theme": "filter_bubble_overpersonalization",
+          "theme": "trust_in_recs",
           "count": 2
         },
         {
-          "theme": "repetition_fatigue",
+          "theme": "stale_recommendations",
           "count": 2
         }
       ],
       "top_jobs": [
-        "block AI \"artists\" altogether or remove fake music",
-        "remove subscriptions",
-        "Find alternative ways to discover new music"
+        "listen to what the user wants",
+        "listen to authentic music recommendations",
+        "have more control over music playback, especially skipping and playing songs by choice"
       ]
     },
     "focus_work_listener": {
       "top_themes": [
         {
           "theme": "other",
-          "count": 60
+          "count": 55
         },
         {
           "theme": "discovery_buried_in_ui",
-          "count": 18
+          "count": 12
         },
         {
           "theme": "repetition_fatigue",
@@ -125,72 +125,72 @@
         }
       ],
       "top_jobs": [
-        "evaluate app quality",
+        "listen to music without ads",
         "listen to music",
-        "enjoy music"
+        "avoid ads"
       ]
     },
     "genre_explorer_filter_bubble": {
       "top_themes": [
         {
           "theme": "other",
-          "count": 45
-        },
-        {
-          "theme": "trust_in_recs",
-          "count": 10
+          "count": 43
         },
         {
           "theme": "discovery_breaks_focus",
-          "count": 10
+          "count": 11
+        },
+        {
+          "theme": "discovery_buried_in_ui",
+          "count": 9
         }
       ],
       "top_jobs": [
-        "listen to music",
-        "use the app daily",
-        "enjoy music"
+        "listen to music without ads",
+        "improve app performance",
+        "finding a specific song"
       ]
     },
     "mood_context_listener": {
       "top_themes": [
         {
           "theme": "other",
-          "count": 42
+          "count": 34
         },
         {
-          "theme": "poor_new_release_surfacing",
-          "count": 5
+          "theme": "discovery_buried_in_ui",
+          "count": 3
         },
         {
-          "theme": "repetition_fatigue",
+          "theme": "filter_bubble_overpersonalization",
           "count": 3
         }
       ],
       "top_jobs": [
-        "enjoy music",
-        "avoid ads",
-        "find and listen to all types of songs"
+        "listen to music",
+        "collaborating with friends",
+        "create playlists"
       ]
     },
     "other": {
       "top_themes": [
         {
           "theme": "other",
-          "count": 76
+          "count": 121
         },
         {
           "theme": "trust_in_recs",
-          "count": 4
+          "count": 3
         },
         {
-          "theme": "discovery_buried_in_ui",
-          "count": 3
+          "theme": "no_control_over_algorithm",
+          "count": 2
         }
       ],
       "top_jobs": [
-        "null",
+        "finding music",
         "enjoy music",
-        "listen to existing music"
+        "listen to music"
       ]
     },
     "workout_tempo_listener": {
@@ -202,7 +202,7 @@
       ],
       "top_jobs": [
         "having a varied music playlist",
-        "find a sleep-inducing atmosphere",
+        "listen to music",
         "viewing listening history"
       ]
     }
@@ -212,19 +212,19 @@
       "job_to_be_done": "hear authentic human-created music",
       "theme": "other",
       "count": 1,
-      "weighted_score": 40416.0
+      "weighted_score": 40797.0
     },
     {
       "job_to_be_done": "access playlist radio",
       "theme": "other",
       "count": 1,
-      "weighted_score": 8596.0
+      "weighted_score": 8598.0
     },
     {
       "job_to_be_done": "discover music trends in Bangladesh",
       "theme": "other",
       "count": 2,
-      "weighted_score": 6536.0
+      "weighted_score": 6552.0
     },
     {
       "job_to_be_done": "hide unwanted music",
@@ -242,7 +242,7 @@
       "job_to_be_done": "access previous years' stats",
       "theme": "other",
       "count": 1,
-      "weighted_score": 2424.0
+      "weighted_score": 2434.0
     },
     {
       "job_to_be_done": "restore 'Create Similar playlist' feature",
@@ -254,19 +254,19 @@
       "job_to_be_done": "see play count for all songs",
       "theme": "trust_in_recs",
       "count": 1,
-      "weighted_score": 2078.0
+      "weighted_score": 2080.0
     },
     {
       "job_to_be_done": "distribute audiobook listening time fairly",
       "theme": "trust_in_recs",
       "count": 1,
-      "weighted_score": 2052.0
+      "weighted_score": 2061.0
     },
     {
       "job_to_be_done": "enable playlist auto-updating",
       "theme": "other",
       "count": 1,
-      "weighted_score": 2000.0
+      "weighted_score": 2004.0
     }
   ],
   "quotes_by_theme": {
@@ -333,9 +333,9 @@
         "url": "https://community.spotify.com/t5/Ongoing-Issues/Smart-Shuffle-only-playing-recommended-songs/idi-p/6999605"
       },
       {
-        "text": "Block specific podcasts from auto-playing or appearing in recommendations. I rarely listen to podcasts, but tonight I decided to put on a sleep podcast since I was having trouble falling asleep. Unfortunately, after the sleep podcast ended Spotify started auto-playing a popular podcast that included an extremely graphic, violent and sexual rant. I woke up having a nightmare as a result of Spotify playing this disgusting content that could have been prevented.Turning off explicit content wouldn't have helped because the podcast wasn't even flagged as explicit in the first place, and besides I'm an adult and don't want to exclude good music just because it has an F bomb or two. I already reported the podcast, but there's no way to stop that specific podcast from auto-playing or showing up on my home page again which is disappointing. Heck, there's not even a way to mark it as \"not interested\" which would have been at least somewhat helpful",
+        "text": "A \"like\"/\"Dislike\" feature without adding songs to liked songs. Basically a way to tell the algorithm \"Hey I like that song/type of songs\" without adding it to your liked songs while still being able to skip it at 1/3-1/4th of the song because it doesn't fit your actual mood. I would add it by putting an Up arrow and a Down arrow like {Ignore}{Add to likes}{Up}{Down} or one on top of the other idk I'm not a website designer \ud83d\ude05",
         "source": "community",
-        "url": "https://community.spotify.com/t5/Live-Ideas/Block-specific-podcasts-from-auto-playing-or-appearing-in/idi-p/7294607"
+        "url": "https://community.spotify.com/t5/Live-Ideas/A-quot-like-quot-quot-Dislike-quot-feature-without-adding-songs/idi-p/7496899"
       }
     ],
     "other": [
@@ -367,9 +367,9 @@
         "url": "https://community.spotify.com/t5/Live-Ideas/AI-block-to-protect-artists/idi-p/7301504"
       },
       {
-        "text": "Discover Weekly playlist is blank or missing entirely. We're seeing reports from users whose Discover Weekly playlist is blank, empty or just missing entirely. Attempting to open the playlist results in a \"This content is no longer available\" error",
+        "text": "Continue playlist after playing a searched song. Currently, when I search for a song inside a playlist or inside Liked Songs and press Play on one of the search results, Spotify creates the queue only from the filtered search results. I understand that \u201cSearch in playlist\u201d currently works as a filter. However, this behavior is very unintuitive in everyday use. A common scenario is: 1. I have a large playlist or many Liked Songs. 2. I search for a specific song because I want to start listening from that track. 3. I press Play on that song. 4. I expect Spotify to continue playing from the full original playlist, using the current playback mode such as shuffle or normal playback. Instead, Spotify only keeps the filtered search results in the queue. If the search returns only one song, the queue contains only that one song. From a user perspective, this feels broken, because I did not intend to create a temporary playlist made only of the search results. I simply wanted to find a song inside my existing playlist and start from there. Suggested improvement: When a user presses Play on a song found through playlist search, Spotify should either: 1. Play the selected song and then continue with the full original playlist. or 2. Provide two clear actions: - Play from filtered results - Play from full playlist Alternatively, this could be added as a playback setting: \u201cAfter playing a search result inside a playlist, continue with the full playlist.\u201d This would preserve the current filter-based behavior for users who want it, while making the most common use case much more natural: search for a song, play it, and continue listening to the original playlist. This would be especially useful for large playlists, Liked Songs, downloaded playlists, and users who regularly use shuffle playback",
         "source": "community",
-        "url": "https://community.spotify.com/t5/Ongoing-Issues/Discover-Weekly-playlist-is-blank-or-missing-entirely/idi-p/7413809"
+        "url": "https://community.spotify.com/t5/Live-Ideas/Continue-playlist-after-playing-a-searched-song/idi-p/7492676"
       }
     ],
     "repetition_fatigue": [
@@ -391,14 +391,14 @@
     ],
     "stale_recommendations": [
       {
-        "text": "Issues with using \"Search\" - keyboard does not appear automatically. We received several reports from users about \"Search\" not working as expected on Android: the keyboard does not appear automatically when tapping on the magnifying glass icon",
-        "source": "community",
-        "url": "https://community.spotify.com/t5/Ongoing-Issues/Issues-with-using-quot-Search-quot-keyboard-does-not-appear/idi-p/7318687"
-      },
-      {
         "text": "Button to disable podcasts, video and audio book suggestions. Please add a button or toggle that lets users disable podcast, video, and audiobook recommendations on the home screen. Spotify is, for many of us, primarily a music app. When the start page is filled with podcast headlines, videos, and audiobook suggestions, it starts to feel more like a social media feed than a place to enjoy music. I would really appreciate more user control over the home screen \u2014 for example, the ability to choose whether I want to see music only, or also podcasts, videos, and audiobooks. A calmer, more customizable start page would make Spotify much more enjoyable for users who mainly come for music",
         "source": "community",
         "url": "https://community.spotify.com/t5/Live-Ideas/Button-to-disable-podcasts-video-and-audio-book-suggestions/idi-p/7419186"
+      },
+      {
+        "text": "Issues with using \"Search\" - keyboard does not appear automatically. We received several reports from users about \"Search\" not working as expected on Android: the keyboard does not appear automatically when tapping on the magnifying glass icon",
+        "source": "community",
+        "url": "https://community.spotify.com/t5/Ongoing-Issues/Issues-with-using-quot-Search-quot-keyboard-does-not-appear/idi-p/7318687"
       },
       {
         "text": "[All Devices] Bring back queue refreshing after selecting a song. Hello! I think it's a good idea to bring back the feature that when you select a new song the queue would automatically refresh, that was pretty useful! I will leave two videos at the end of this post to show how it was before and how it is now. At first, I thought it was just a bug, so I posted about this on Spotify community before and I was guided by a Moderator to try using the Ideas Board to bring the \"feature\" back. You can access the post through this link . I can state four reasons for that to come back: First, the algorithm related to make a consistent and random queue, loses it's sense since the queue will not refresh after selecting one song that would generate a \"fitting\" queue acordlying; Second, that is a major flaw in usability; Third, Spotify app on Windows (I don't know about the other OSs) does not have the an oficial option to turn off permanentally the Smart Shuffle and the easiest way to refresh the queue would just be selecting another song; Fourth, I have used Spotify in a lot of different computers with diferent specifications and the fact that we'll have to possibly pass through the Smart Shuffle as we manually refresh the queue, turning on and off the Shuffle is not good at all considering that the app may crash or have a poor performance in low budget computers. I don't know when this feature will be fully removed since it seems that just some accounts were affected by this new update. I really think this is a vital feature for the app. How it was before: https://youtu.be/cjRjX0kY6PA How it is now: https://youtu.be/xnBTTKg4_tE I appreciate any response. My best regards, 08/14/2025 Update: It seems that more and more people are missing the \"feature\"\u00a0since a lot more people commented and liked both this idea and my post in Spotify's community. That makes me believe that more accounts were included in the test field, thus, more people are complaing about it. Edit 1: English improvement, minor corrections (english hard lol) and update added",
@@ -528,6 +528,6 @@
       }
     ]
   },
-  "total_relevant": 372,
-  "total_rows": 1435
+  "total_relevant": 390,
+  "total_rows": 1477
 }
